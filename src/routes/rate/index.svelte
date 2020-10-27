@@ -26,10 +26,10 @@
 </style>
 
 <svelte:head>
-  <title>Blog</title>
+  <title>Rate</title>
 </svelte:head>
 
-<h1>Recent posts</h1>
+<h1>Rate home</h1>
 
 <!-- <ul>
   {#each posts as post}

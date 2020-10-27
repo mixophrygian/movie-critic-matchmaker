@@ -1,5 +1,6 @@
 <script>
   import successkid from "images/successkid.jpg"
+  import { pick20RandomMovies } from "../_helpers/utils.ts"
 </script>
 
 <style>
@@ -52,3 +53,4 @@
 </figure>
 
 <p><a href="rate">Start</a></p>
+<p>{pick20RandomMovies()}</p>
