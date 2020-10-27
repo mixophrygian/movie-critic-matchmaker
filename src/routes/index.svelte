@@ -51,4 +51,4 @@
   </figcaption>
 </figure>
 
-<p><a href="blog">Start</a></p>
+<p><a href="rate">Start</a></p>
