@@ -2,9 +2,16 @@
   import { onMount } from "svelte"
   import { Carousel } from "../../_helpers/carousel.ts"
   import StartCard from "../../components/StartCard.svelte"
+  import { stores } from "@sapper/app"
+  let apiKey = ""
+  const { session } = stores()
+  session.subscribe((value) => {
+    apiKey = value.OMDB_API
+  })
+
   let board
   onMount(() => {
-    let carousel = new Carousel(board)
+    let carousel = new Carousel(board, apiKey)
   })
 </script>
 
@@ -20,8 +27,8 @@
   }
 
   :global(.card) {
-    width: 320px;
-    height: 320px;
+    width: 300px;
+    height: 445px;
     position: absolute;
     top: 50%;
     left: 50%;

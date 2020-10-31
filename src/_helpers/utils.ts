@@ -74,19 +74,19 @@ export function handleTouchMove(evt) {
   yDown = null
 }
 
-export function recordUserChoice(directionInt) {
+export function recordUserChoice(directionInt, title) {
   switch (directionInt) {
     case 2:
-      console.log('swiped left')
+      console.log('swiped left', title)
       break;
     case 4:
-      console.log('swiped right')
+      console.log('swiped right', title)
       break;
     case 8:
-      console.log('swiped up')
+      console.log('swiped up', title)
       break;
     default:
-      console.log('swiped some other way', directionInt)
+      console.log('swiped some other way', directionInt, title)
   }
 }
 
@@ -94,4 +94,12 @@ export function showResults() {
   // calculate matching and unmatching critics
   // navigate to a "results" page
   console.log('show results')
+}
+
+export function parseMovieData(data) {
+  let imageUrl = data.Poster
+  console.log(data)
+  return {
+    imageUrl
+  }
 }

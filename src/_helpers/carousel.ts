@@ -1,23 +1,18 @@
 /* LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
 
-import { recordUserChoice, showResults } from '../_helpers/utils.ts'
+import { recordUserChoice, showResults, parseMovieData } from '../_helpers/utils.ts'
 import MovieCard from "../components/MovieCard.svelte"
-import { stores } from '@sapper/app'
-let omdb_api = ''
-//const { session } = stores();
-// session.subscribe(value => {
-//     omdb_api = value.OMDB_API;
-// })
 
 const twentyMovieTitles = ["Avatar", "Cloud Atlas", "Joker"]
 
 export class Carousel {
-    constructor(element) {
+    constructor(element, apiKey) {
         this.board = element
 
-        twentyMovieTitles.forEach(title => {
-            //fetch('http://www.omdbapi.com/?i=tt3896198&apikey={' + omdb_api + '}')
-            this.push(title)
+        twentyMovieTitles.forEach(async title => {
+            const movieData = await fetch('http://www.omdbapi.com/?t=' + title + '&apikey=' + apiKey + '').then(response => response.json())
+            console.log(movieData)
+            this.push(title, movieData)
         })
 
         // handle gestures
@@ -174,7 +169,10 @@ export class Carousel {
             }
 
             if (successful) {
-                recordUserChoice(e.direction)
+                if (this.topCard.querySelector('.movieTitle')) {
+                    const title = this.topCard.querySelector('.movieTitle').innerHTML
+                    recordUserChoice(e.direction, title)
+                }
 
                 // throw card in the chosen direction
                 this.topCard.style.transform =
@@ -207,8 +205,9 @@ export class Carousel {
         }
     }
 
-    push(movieTitle) {
+    push(movieTitle, data) {
         console.log('pushed', movieTitle)
+        const { imageUrl } = parseMovieData(data)
 
         //create a wrapper component to append a MovieCard component to
         let card = document.createElement("div")
@@ -222,9 +221,7 @@ export class Carousel {
 
         //fetch movie poster
         card.firstChild.style.backgroundImage =
-            "url('https://picsum.photos/320/320/?random=" +
-            Math.round(Math.random() * 1000000) +
-            "')"
+            "url('" + imageUrl + "')"
 
         //and add the MovieCard child by itself
         this.board.insertBefore(card.firstChild, this.board.firstChild)
