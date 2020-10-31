@@ -1,8 +1,8 @@
 import { goto } from '@sapper/app';
 
 export function pick20RandomMovies() {
- let out = shuffle([0,1,2,3,4,5,6,7,8,8,9,10,11,12,13,14,15,16,17,18,19])
- return out
+  let out = shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
+  return out
 }
 
 function shuffle(array) {
@@ -25,9 +25,9 @@ function shuffle(array) {
 }
 
 export function handleTouchStart(evt) {
-    xDown = evt.touches[0].clientX
-    yDown = evt.touches[0].clientY
-  }
+  xDown = evt.touches[0].clientX
+  yDown = evt.touches[0].clientY
+}
 
 let xDown
 let yDown
@@ -72,4 +72,26 @@ export function handleTouchMove(evt) {
   /* reset values */
   xDown = null
   yDown = null
+}
+
+export function recordUserChoice(directionInt) {
+  switch (directionInt) {
+    case 2:
+      console.log('swiped left')
+      break;
+    case 4:
+      console.log('swiped right')
+      break;
+    case 8:
+      console.log('swiped up')
+      break;
+    default:
+      console.log('swiped some other way', directionInt)
+  }
+}
+
+export function showResults() {
+  // calculate matching and unmatching critics
+  // navigate to a "results" page
+  console.log('show results')
 }

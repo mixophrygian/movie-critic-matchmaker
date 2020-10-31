@@ -5,12 +5,12 @@
 
 <style>
   main {
+    display: flex;
+    flex-direction: column;
     position: relative;
-    max-width: 56em;
-    border: 1px solid red;
     height: 100vh;
-    background-color: white;
-    padding: 2em;
+    background-color: darkred;
+    color: white;
     margin: 0 auto;
     box-sizing: border-box;
   }

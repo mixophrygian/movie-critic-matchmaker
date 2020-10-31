@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte"
   import { Carousel } from "../../_helpers/carousel.ts"
+  import StartCard from "../../components/StartCard.svelte"
   let board
   onMount(() => {
     let carousel = new Carousel(board)
@@ -9,11 +10,13 @@
 
 <style>
   #board {
-    width: 100%;
-    height: 100%;
-    position: relative;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
     overflow: hidden;
-    background-color: rgb(245, 247, 250);
+    background-color: transparent;
   }
 
   :global(.card) {
@@ -25,6 +28,7 @@
     border-radius: 1%;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
     background-color: white;
+    color: black;
     transform: translateX(-50%) translateY(-50%);
   }
 </style>
@@ -37,5 +41,5 @@
 
 <div>A movie will go here</div>
 <div bind:this={board} id="board">
-  <div class="card" />
+  <StartCard />
 </div>

@@ -1,12 +1,16 @@
 /* LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
 
+import { recordUserChoice, showResults } from '../_helpers/utils.ts'
+import MovieCard from "../components/MovieCard.svelte"
+const twentyMovieTitles = ["Avatar", "Cloud Atlas", "Joker"]
+
 export class Carousel {
     constructor(element) {
         this.board = element
 
-        // add first two cards programmatically
-        this.push()
-        this.push()
+        twentyMovieTitles.forEach(title => {
+            this.push(title)
+        })
 
         // handle gestures
         this.handle()
@@ -108,7 +112,10 @@ export class Carousel {
         let propY = e.deltaY / this.board.clientHeight
 
         // get swipe direction, left (-1) or right (1)
-        let dirX = e.deltaX < 0 ? -1 : 1
+        const SWIPE_LEFT = -1
+        const SWIPE_RIGHT = 1
+
+        let dirX = e.deltaX < 0 ? SWIPE_LEFT : SWIPE_RIGHT
 
         // get degrees of rotation, between 0 and +/- 45
         let deg = this.isDraggingFrom * dirX * Math.abs(propX) * 45
@@ -159,6 +166,8 @@ export class Carousel {
             }
 
             if (successful) {
+                recordUserChoice(e.direction)
+
                 // throw card in the chosen direction
                 this.topCard.style.transform =
                     "translateX(" +
@@ -173,8 +182,9 @@ export class Carousel {
                 setTimeout(() => {
                     // remove swiped card
                     this.board.removeChild(this.topCard)
-                    // add new card
-                    this.push()
+                    if (!this.board.firstChild) {
+                        showResults()
+                    }
                     // handle gestures on new top card
                     this.handle()
                 }, 200)
@@ -189,18 +199,26 @@ export class Carousel {
         }
     }
 
-    push() {
-        console.log("push called")
+    push(movieTitle) {
+        console.log('pushed', movieTitle)
+
+        //create a wrapper component to append a MovieCard component to
         let card = document.createElement("div")
-
-        // svelte has trouble here
         card.classList.add("card")
+        // add it to the DOM so MovieCard can find it
+        this.board.insertBefore(card, this.board.firstChild)
+        const movieCard = new MovieCard({ target: document.querySelector(".card"), props: { movie: movieTitle } })
 
-        card.style.backgroundImage =
+        //remove the wrapper
+        this.board.removeChild(this.board.firstChild)
+
+        card.firstChild.style.backgroundImage =
             "url('https://picsum.photos/320/320/?random=" +
             Math.round(Math.random() * 1000000) +
             "')"
 
-        this.board.insertBefore(card, this.board.firstChild)
+        //and add the MovieCard child by itself
+        this.board.insertBefore(card.firstChild, this.board.firstChild)
+
     }
 }
