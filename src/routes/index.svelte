@@ -1,4 +1,13 @@
+<script context="module">
+  export async function preload(page, session) {
+    const { OMDB_API } = session
+
+    return { omdb_api: OMDB_API }
+  }
+</script>
+
 <script>
+  export let omdb_api
   import successkid from "images/successkid.jpg"
   import { pick20RandomMovies } from "../_helpers/utils.ts"
 </script>

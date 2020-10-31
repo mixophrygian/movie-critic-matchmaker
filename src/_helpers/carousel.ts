@@ -2,6 +2,13 @@
 
 import { recordUserChoice, showResults } from '../_helpers/utils.ts'
 import MovieCard from "../components/MovieCard.svelte"
+import { stores } from '@sapper/app'
+let omdb_api = ''
+//const { session } = stores();
+// session.subscribe(value => {
+//     omdb_api = value.OMDB_API;
+// })
+
 const twentyMovieTitles = ["Avatar", "Cloud Atlas", "Joker"]
 
 export class Carousel {
@@ -9,6 +16,7 @@ export class Carousel {
         this.board = element
 
         twentyMovieTitles.forEach(title => {
+            //fetch('http://www.omdbapi.com/?i=tt3896198&apikey={' + omdb_api + '}')
             this.push(title)
         })
 
@@ -212,6 +220,7 @@ export class Carousel {
         //remove the wrapper
         this.board.removeChild(this.board.firstChild)
 
+        //fetch movie poster
         card.firstChild.style.backgroundImage =
             "url('https://picsum.photos/320/320/?random=" +
             Math.round(Math.random() * 1000000) +
