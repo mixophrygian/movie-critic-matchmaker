@@ -1,27 +1,31 @@
-<script context="module">
-  import successkid from "images/successkid.jpg"
-  export function preload() {
-    return this.fetch(`rate.json`)
-      .then((r) => r.json())
-      .then((posts) => {
-        return { posts }
-      })
-  }
-</script>
-
 <script>
-  export let posts
+  import { onMount } from "svelte"
+  import { Carousel } from "../../_helpers/carousel.ts"
+  let board
+  onMount(() => {
+    let carousel = new Carousel(board)
+  })
 </script>
 
 <style>
-  img {
+  #board {
     width: 100%;
-    max-width: 400px;
-    margin: 0 0 1em 0;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(245, 247, 250);
   }
-  ul {
-    margin: 0 0 1em 0;
-    line-height: 1.5;
+
+  :global(.card) {
+    width: 320px;
+    height: 320px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 1%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transform: translateX(-50%) translateY(-50%);
   }
 </style>
 
@@ -31,15 +35,7 @@
 
 <h1>Rate home</h1>
 
-<!-- <ul>
-  {#each posts as post}
-    <!-- we're using the non-standard `rel=prefetch` attribute to
-				tell Sapper to load the data for the page as soon as
-				the user hovers over the link or taps it, instead of
-				waiting for the 'click' event -->
-<!-- <li><a rel="prefetch" href="blog/{post.slug}">{post.title}</a></li>
-  {/each}
-</ul> -->
-
 <div>A movie will go here</div>
-<img alt="Success Kid" src={successkid} />
+<div bind:this={board} id="board">
+  <div class="card" />
+</div>

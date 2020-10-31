@@ -16,8 +16,6 @@
   }
 </style>
 
-<!-- <Nav {segment}/> -->
-
-<main on:touchstart={handleTouchStart} on:touchend={handleTouchMove}>
+<main>
   <slot />
 </main>

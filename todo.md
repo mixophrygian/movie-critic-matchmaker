@@ -3,3 +3,7 @@ Have swipable navigation! And also random array index shuffler. NExt step is to 
 -array of movie indices to use
 -user ratings
 -current movie index
+
+**_ consider updating UI to have a list of swipable cards - https://github.com/simonepm/likecarousel/blob/master/index.html _**
+
+Looks much more tinder-like. Could generate random indices to build card pile.
