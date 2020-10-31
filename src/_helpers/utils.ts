@@ -98,7 +98,6 @@ export function showResults() {
 
 export function parseMovieData(data) {
   let imageUrl = data.Poster
-  console.log(data)
   return {
     imageUrl
   }

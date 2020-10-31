@@ -12,6 +12,4 @@ Looks much more tinder-like. Could generate random indices to build card pile.
 
 did it!
 
-next: save omdb_api in .env, following this - https://mariosfakiolas.com/blog/manage-environment-variables-in-a-sapper-application/
-
-WIP code for stores is inside the carousel.ts helper but maybe shouldn't be. Trying to get the stores() session causes error: "Function called outside component initialization"
+next: figure out how to fetch movies and obscure apikey? Maybe on the server?
