@@ -6,13 +6,11 @@ import MovieCard from "../components/MovieCard.svelte"
 const twentyMovieTitles = ["Avatar", "Cloud Atlas", "Joker"]
 
 export class Carousel {
-    constructor(element, apiKey) {
+    constructor(element) {
         this.board = element
 
         twentyMovieTitles.forEach(async title => {
-            const movieData = await fetch('http://www.omdbapi.com/?t=' + title + '&apikey=' + apiKey + '').then(response => response.json())
-            console.log(movieData)
-            this.push(title, movieData)
+            this.push(title)
         })
 
         // handle gestures
@@ -205,9 +203,8 @@ export class Carousel {
         }
     }
 
-    push(movieTitle, data) {
+    push(movieTitle) {
         console.log('pushed', movieTitle)
-        const { imageUrl } = parseMovieData(data)
 
         //create a wrapper component to append a MovieCard component to
         let card = document.createElement("div")
@@ -219,9 +216,9 @@ export class Carousel {
         //remove the wrapper
         this.board.removeChild(this.board.firstChild)
 
-        //fetch movie poster
-        card.firstChild.style.backgroundImage =
-            "url('" + imageUrl + "')"
+        // //fetch movie poster
+        // card.firstChild.style.backgroundImage =
+        //     "url('" + imageUrl + "')"
 
         //and add the MovieCard child by itself
         this.board.insertBefore(card.firstChild, this.board.firstChild)

@@ -2,16 +2,10 @@
   import { onMount } from "svelte"
   import { Carousel } from "../../_helpers/carousel.ts"
   import StartCard from "../../components/StartCard.svelte"
-  import { stores } from "@sapper/app"
-  let apiKey = ""
-  const { session } = stores()
-  session.subscribe((value) => {
-    apiKey = value.OMDB_API
-  })
 
   let board
   onMount(() => {
-    let carousel = new Carousel(board, apiKey)
+    let carousel = new Carousel(board)
   })
 </script>
 
