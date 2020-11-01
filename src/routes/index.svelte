@@ -1,15 +1,21 @@
 <script context="module">
-  export async function preload(page, session) {
-    const { OMDB_API } = session
+  import { allMovies } from "../stores.js"
 
-    return { omdb_api: OMDB_API }
+  export async function preload() {
+    const response = await this.fetch("moviesWithPosters.json")
+    const movies = await response.json()
+    return {
+      movies,
+    }
   }
 </script>
 
 <script>
-  export let omdb_api
+  let movies
+  $allMovies = movies
+  console.log("response json", $allMovies)
+
   import successkid from "images/successkid.jpg"
-  import { pick20RandomMovies } from "../_helpers/utils.ts"
 </script>
 
 <style>
@@ -62,4 +68,3 @@
 </figure>
 
 <p><a href="rate">Start</a></p>
-<p>{pick20RandomMovies()}</p>
