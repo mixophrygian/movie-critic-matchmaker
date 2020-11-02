@@ -12,6 +12,8 @@ export const randomMovies = derived(allMovies, ($allMovies, set) => {
 
 export const userChoices = writable({})
 
+export const completedChoices = writable(false)
+
 export const results = writable([])
 
 // {movies: [{title: Evil Dead, broadRating: rotten}]}

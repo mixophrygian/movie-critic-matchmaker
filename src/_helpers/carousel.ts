@@ -4,7 +4,7 @@ import { recordUserChoice, showResults, parseMovieData } from '../_helpers/utils
 import MovieCard from "../components/MovieCard.svelte"
 
 const twentyMovieTitles = ["Avatar", "Cloud Atlas", "Joker"]
-import { randomMovies } from '../stores.js'
+import { completedChoices, randomMovies } from '../stores.js'
 
 let randomMoviesValue
 
@@ -193,6 +193,9 @@ export class Carousel {
                     // remove swiped card
                     this.board.removeChild(this.topCard)
                     if (!this.board.firstChild) {
+                        // calculate results
+                        // show results
+                        completedChoices.update(() => true)
                         showResults()
                     }
                     // handle gestures on new top card
@@ -215,7 +218,7 @@ export class Carousel {
         card.classList.add("card")
         // add it to the DOM so MovieCard can find it
         this.board.insertBefore(card, this.board.firstChild)
-        const movieCard = new MovieCard({ target: document.querySelector(".card"), props: { movie: movie.title } })
+        const movieCard = new MovieCard({ target: document.querySelector(".card") })
 
         //remove the wrapper
         this.board.removeChild(this.board.firstChild)

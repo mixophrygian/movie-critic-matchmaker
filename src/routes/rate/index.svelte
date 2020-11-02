@@ -1,5 +1,5 @@
 <script context="module">
-  import { allMovies } from "../../stores.js"
+  import { allMovies, completedChoices } from "../../stores.js"
 
   export async function preload() {
     const response = await this.fetch("moviesWithPosters.json")
@@ -12,11 +12,18 @@
 
 <script>
   export let movies
+  export let completed
+
   $allMovies = movies
+  $completedChoices = completed
 
   import { onMount } from "svelte"
   import { Carousel } from "../../_helpers/carousel.ts"
   import StartCard from "../../components/StartCard.svelte"
+  import fresh from "images/fresh.png"
+  import rotten from "images/rotten.png"
+  import skip from "images/skip.png"
+  import IconButton from "../../components/IconButton.svelte"
 
   let board
   onMount(() => {
@@ -28,9 +35,7 @@
   #board {
     width: 100vw;
     height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     overflow: hidden;
     background-color: transparent;
   }
@@ -47,15 +52,32 @@
     color: black;
     transform: translateX(-50%) translateY(-50%);
   }
+
+  .buttonContainer {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    bottom: 4%;
+    left: 0%;
+  }
 </style>
 
 <svelte:head>
   <title>Rate</title>
 </svelte:head>
 
-<h1>Rate home</h1>
+{#if $completedChoices}
+  <h1>Results</h1>
+{/if}
 
-<div>A movie will go here</div>
-<div bind:this={board} id="board">
-  <StartCard />
-</div>
+{#if !$completedChoices}
+  <div bind:this={board} id="board">
+    <StartCard />
+    <div class="buttonContainer">
+      <IconButton imageName={rotten} />
+      <IconButton imageName={skip} />
+      <IconButton imageName={fresh} />
+    </div>
+  </div>
+{/if}
