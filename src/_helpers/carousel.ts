@@ -192,7 +192,7 @@ export class Carousel {
                 setTimeout(() => {
                     // remove swiped card
                     this.board.removeChild(this.topCard)
-                    if (!this.board.firstChild) {
+                    if (this.board.firstChild.className !== "card") {
                         // calculate results
                         // show results
                         completedChoices.update(() => true)

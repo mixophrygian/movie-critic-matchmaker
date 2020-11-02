@@ -29,6 +29,10 @@
   onMount(() => {
     let carousel = new Carousel(board)
   })
+
+  function registerChoice(event) {
+    console.log(event.detail.value)
+  }
 </script>
 
 <style>
@@ -75,9 +79,12 @@
   <div bind:this={board} id="board">
     <StartCard />
     <div class="buttonContainer">
-      <IconButton imageName={rotten} />
-      <IconButton imageName={skip} />
-      <IconButton imageName={fresh} />
+      <IconButton
+        on:choice={registerChoice}
+        alt={'rotten'}
+        imageName={rotten} />
+      <IconButton on:choice={registerChoice} alt={'skip'} imageName={skip} />
+      <IconButton on:choice={registerChoice} alt={'fresh'} imageName={fresh} />
     </div>
   </div>
 {/if}
