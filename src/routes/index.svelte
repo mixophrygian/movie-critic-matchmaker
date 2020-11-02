@@ -1,20 +1,4 @@
-<script context="module">
-  import { allMovies } from "../stores.js"
-
-  export async function preload() {
-    const response = await this.fetch("moviesWithPosters.json")
-    const movies = await response.json()
-    return {
-      movies,
-    }
-  }
-</script>
-
 <script>
-  let movies
-  $allMovies = movies
-  console.log("response json", $allMovies)
-
   import successkid from "images/successkid.jpg"
 </script>
 

@@ -4,13 +4,19 @@ import { recordUserChoice, showResults, parseMovieData } from '../_helpers/utils
 import MovieCard from "../components/MovieCard.svelte"
 
 const twentyMovieTitles = ["Avatar", "Cloud Atlas", "Joker"]
+import { randomMovies } from '../stores.js'
 
+let randomMoviesValue
+
+const unsubscribe = randomMovies.subscribe(value => {
+    randomMoviesValue = value;
+});
 export class Carousel {
     constructor(element) {
         this.board = element
 
-        twentyMovieTitles.forEach(async title => {
-            this.push(title)
+        randomMoviesValue.forEach(async movie => {
+            this.push(movie)
         })
 
         // handle gestures
@@ -203,22 +209,20 @@ export class Carousel {
         }
     }
 
-    push(movieTitle) {
-        console.log('pushed', movieTitle)
-
+    push(movie) {
         //create a wrapper component to append a MovieCard component to
         let card = document.createElement("div")
         card.classList.add("card")
         // add it to the DOM so MovieCard can find it
         this.board.insertBefore(card, this.board.firstChild)
-        const movieCard = new MovieCard({ target: document.querySelector(".card"), props: { movie: movieTitle } })
+        const movieCard = new MovieCard({ target: document.querySelector(".card"), props: { movie: movie.title } })
 
         //remove the wrapper
         this.board.removeChild(this.board.firstChild)
 
         // //fetch movie poster
-        // card.firstChild.style.backgroundImage =
-        //     "url('" + imageUrl + "')"
+        card.firstChild.style.backgroundImage =
+            "url('" + movie.poster + "')"
 
         //and add the MovieCard child by itself
         this.board.insertBefore(card.firstChild, this.board.firstChild)
