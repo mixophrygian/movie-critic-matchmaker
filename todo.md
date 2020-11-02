@@ -1,1 +1,2 @@
-next: seed store with movie data, start user store for choices
+Next:
+make buttons programatically swipe cards.
