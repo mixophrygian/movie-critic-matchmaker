@@ -18,6 +18,7 @@
   }
   img {
     margin-right: 1rem;
+    align-self: start;
   }
 
   .popcorn {
