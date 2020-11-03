@@ -24,6 +24,7 @@
 
   .skip {
     max-width: 40px;
+    margin-bottom: 1rem;
   }
 
   .freshOrRottenContainer {
@@ -55,7 +56,7 @@
 </style>
 
 <div class="card startCard">
-  Swipe to rate!
+  Swipe to rate
   <div class="freshOrRottenContainer">
     <img alt="rotten" src={rotten} />
     <img alt="swipe left for rotten" class="hands" src={swipeLeft} />
@@ -66,5 +67,4 @@
     <img alt="skip" class="skip" src={skip} />
     <img alt="swipe up to skip" class="hands up" src={swipeUp} />
   </div>
-  <div class="skipText">Swipe up to skip</div>
 </div>

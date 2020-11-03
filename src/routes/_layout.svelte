@@ -1,6 +1,5 @@
 <script>
   import Nav from "../components/Nav.svelte"
-  import { handleTouchStart, handleTouchMove } from "../_helpers/utils.ts"
 </script>
 
 <style>

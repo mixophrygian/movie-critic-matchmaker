@@ -173,7 +173,32 @@ export class Carousel {
             }
 
             if (successful) {
-                this.swipeAndRemove(posX, posY, deg, e.direction)
+                if (this.topCard.querySelector('.movieTitle')) {
+                    const title = this.topCard.querySelector('.movieTitle').innerHTML
+                    recordUserChoice(e.direction, title)
+                }
+                this.topCard.style.transform =
+                    "translateX(" +
+                    posX +
+                    "px) translateY(" +
+                    posY +
+                    "px) rotate(" +
+                    deg +
+                    "deg)"
+
+                // wait transition end
+                setTimeout(() => {
+                    // remove swiped card
+                    this.board.removeChild(this.topCard)
+                    if (!this.board.firstChild) {
+                        // calculate results
+                        // show results
+                        completedChoices.update(() => true)
+                        showResults()
+                    }
+                    // handle gestures on new top card
+                    this.handle()
+                }, 200)
             } else {
                 // reset cards position and size
                 this.topCard.style.transform =
@@ -185,35 +210,7 @@ export class Carousel {
         }
     }
 
-    swipeAndRemove(posX, posY, deg, direction) {
-        if (this.topCard.querySelector('.movieTitle')) {
-            const title = this.topCard.querySelector('.movieTitle').innerHTML
-            recordUserChoice(direction, title)
-        }
 
-        this.topCard.style.transform =
-            "translateX(" +
-            posX +
-            "px) translateY(" +
-            posY +
-            "px) rotate(" +
-            deg +
-            "deg)"
-
-        // wait transition end
-        setTimeout(() => {
-            // remove swiped card
-            this.board.removeChild(this.topCard)
-            if (!this.board.firstChild) {
-                // calculate results
-                // show results
-                completedChoices.update(() => true)
-                showResults()
-            }
-            // handle gestures on new top card
-            this.handle()
-        }, 200)
-    }
 
     push(movie) {
         //create a wrapper component to append a MovieCard component to

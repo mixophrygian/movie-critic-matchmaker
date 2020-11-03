@@ -48,15 +48,6 @@
     color: black;
     transform: translateX(-50%) translateY(-50%);
   }
-
-  .buttonContainer {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    bottom: 4%;
-    left: 0%;
-  }
 </style>
 
 <svelte:head>
