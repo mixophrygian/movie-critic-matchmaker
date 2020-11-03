@@ -20,19 +20,11 @@
   import { onMount } from "svelte"
   import { Carousel } from "../../_helpers/carousel.ts"
   import StartCard from "../../components/StartCard.svelte"
-  import fresh from "images/fresh.png"
-  import rotten from "images/rotten.png"
-  import skip from "images/skip.png"
-  import IconButton from "../../components/IconButton.svelte"
 
   let board
   onMount(() => {
     let carousel = new Carousel(board)
   })
-
-  function registerChoice(event) {
-    console.log(event.detail.value)
-  }
 </script>
 
 <style>
@@ -78,13 +70,5 @@
 {#if !$completedChoices}
   <div bind:this={board} id="board">
     <StartCard />
-    <div class="buttonContainer">
-      <IconButton
-        on:choice={registerChoice}
-        alt={'rotten'}
-        imageName={rotten} />
-      <IconButton on:choice={registerChoice} alt={'skip'} imageName={skip} />
-      <IconButton on:choice={registerChoice} alt={'fresh'} imageName={fresh} />
-    </div>
   </div>
 {/if}

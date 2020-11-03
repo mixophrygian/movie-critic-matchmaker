@@ -1,6 +1,6 @@
 /* LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
 
-import { recordUserChoice, showResults, parseMovieData } from '../_helpers/utils.ts'
+import { recordUserChoice, showResults } from '../_helpers/utils.ts'
 import MovieCard from "../components/MovieCard.svelte"
 
 const twentyMovieTitles = ["Avatar", "Cloud Atlas", "Joker"]
@@ -173,34 +173,7 @@ export class Carousel {
             }
 
             if (successful) {
-                if (this.topCard.querySelector('.movieTitle')) {
-                    const title = this.topCard.querySelector('.movieTitle').innerHTML
-                    recordUserChoice(e.direction, title)
-                }
-
-                // throw card in the chosen direction
-                this.topCard.style.transform =
-                    "translateX(" +
-                    posX +
-                    "px) translateY(" +
-                    posY +
-                    "px) rotate(" +
-                    deg +
-                    "deg)"
-
-                // wait transition end
-                setTimeout(() => {
-                    // remove swiped card
-                    this.board.removeChild(this.topCard)
-                    if (this.board.firstChild.className !== "card") {
-                        // calculate results
-                        // show results
-                        completedChoices.update(() => true)
-                        showResults()
-                    }
-                    // handle gestures on new top card
-                    this.handle()
-                }, 200)
+                this.swipeAndRemove(posX, posY, deg, e.direction)
             } else {
                 // reset cards position and size
                 this.topCard.style.transform =
@@ -212,18 +185,49 @@ export class Carousel {
         }
     }
 
+    swipeAndRemove(posX, posY, deg, direction) {
+        if (this.topCard.querySelector('.movieTitle')) {
+            const title = this.topCard.querySelector('.movieTitle').innerHTML
+            recordUserChoice(direction, title)
+        }
+
+        this.topCard.style.transform =
+            "translateX(" +
+            posX +
+            "px) translateY(" +
+            posY +
+            "px) rotate(" +
+            deg +
+            "deg)"
+
+        // wait transition end
+        setTimeout(() => {
+            // remove swiped card
+            this.board.removeChild(this.topCard)
+            if (!this.board.firstChild) {
+                // calculate results
+                // show results
+                completedChoices.update(() => true)
+                showResults()
+            }
+            // handle gestures on new top card
+            this.handle()
+        }, 200)
+    }
+
     push(movie) {
         //create a wrapper component to append a MovieCard component to
         let card = document.createElement("div")
         card.classList.add("card")
+
         // add it to the DOM so MovieCard can find it
         this.board.insertBefore(card, this.board.firstChild)
-        const movieCard = new MovieCard({ target: document.querySelector(".card") })
+        const movieCard = new MovieCard({ target: document.querySelector(".card"), props: { title: movie.title } })
 
         //remove the wrapper
         this.board.removeChild(this.board.firstChild)
 
-        // //fetch movie poster
+        //add poster image to MovieCard
         card.firstChild.style.backgroundImage =
             "url('" + movie.poster + "')"
 
