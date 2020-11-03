@@ -19,6 +19,7 @@
 </script>
 
 <script>
+  import { fade, fly } from "svelte/transition"
   import { onDestroy, onMount } from "svelte"
   import { Carousel } from "../../_helpers/carousel.ts"
   import {
@@ -26,6 +27,7 @@
     findCriticsWhoDisagree,
   } from "../../_helpers/matchCriticsToUserInput"
   import StartCard from "../../components/StartCard.svelte"
+  import Results from "../../components/Results.svelte"
 
   export let movies
   export let critics
@@ -78,6 +80,13 @@
     color: black;
     transform: translateX(-50%) translateY(-50%);
   }
+
+  .resultsPage {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 2rem;
+  }
 </style>
 
 <svelte:head>
@@ -85,8 +94,10 @@
 </svelte:head>
 
 {#if $completedChoices}
-  <h1>Results</h1>
-  <div>{$userChoices}</div>
+  <!-- TODO: fade in? -->
+  <div transition:fly={{ y: 10, duration: 500 }} class="resultsPage">
+    <Results {agreed} {disagreed} />
+  </div>
 {/if}
 
 {#if !$completedChoices}
