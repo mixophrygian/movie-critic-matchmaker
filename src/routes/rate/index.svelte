@@ -1,30 +1,60 @@
 <script context="module">
-  import { allMovies, completedChoices, userChoices } from "../../stores.js"
+  import {
+    allMovies,
+    criticObjects,
+    completedChoices,
+    userChoices,
+  } from "../../stores.js"
 
   export async function preload() {
     const response = await this.fetch("moviesWithPosters.json")
     const movies = await response.json()
+    const criticObjects = await this.fetch("consolidatedCriticObjects.json")
+    const critics = await criticObjects.json()
     return {
       movies,
+      critics,
     }
   }
 </script>
 
 <script>
-  export let movies
-  export let completed
+  import { onDestroy, onMount } from "svelte"
+  import { Carousel } from "../../_helpers/carousel.ts"
+  import {
+    findCriticsWhoAgree,
+    findCriticsWhoDisagree,
+  } from "../../_helpers/matchCriticsToUserInput"
+  import StartCard from "../../components/StartCard.svelte"
 
+  export let movies
+  export let critics
+  export let completed
+  let user_choices
+  let agreed
+  let disagreed
+
+  $criticObjects = critics
   $allMovies = movies
   $completedChoices = completed
 
-  import { onMount } from "svelte"
-  import { Carousel } from "../../_helpers/carousel.ts"
-  import StartCard from "../../components/StartCard.svelte"
+  const unsubscribe = userChoices.subscribe((value) => {
+    user_choices = value
+  })
+  onDestroy(unsubscribe)
 
   let board
   onMount(() => {
     let carousel = new Carousel(board)
   })
+
+  $: {
+    if ($completedChoices) {
+      agreed = findCriticsWhoAgree($criticObjects)($userChoices)
+      disagreed = findCriticsWhoDisagree($criticObjects)($userChoices)
+      console.log(agreed, disagreed)
+    }
+  }
 </script>
 
 <style>
