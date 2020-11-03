@@ -95,7 +95,7 @@
 
 {#if $completedChoices}
   <!-- TODO: fade in? -->
-  <div transition:fly={{ y: 10, duration: 500 }} class="resultsPage">
+  <div in:fly={{ y: 10, duration: 500 }} class="resultsPage">
     <Results {agreed} {disagreed} />
   </div>
 {/if}

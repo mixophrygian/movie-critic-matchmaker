@@ -1,8 +1,12 @@
 <script>
   import Nav from "../components/Nav.svelte"
+  export let segment
 </script>
 
 <style>
+  :global(body) {
+    background-color: darkred;
+  }
   main {
     display: flex;
     flex-direction: column;
@@ -16,5 +20,6 @@
 </style>
 
 <main>
+  <Nav {segment} />
   <slot />
 </main>

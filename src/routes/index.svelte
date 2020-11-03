@@ -41,7 +41,6 @@
 <svelte:head>
   <title>Sapper project template</title>
 </svelte:head>
-
 <h1>Movie Critic Matchmaker</h1>
 
 <figure>
