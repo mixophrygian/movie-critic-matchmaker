@@ -1,5 +1,5 @@
 <script context="module">
-  import { allMovies, completedChoices } from "../../stores.js"
+  import { allMovies, completedChoices, userChoices } from "../../stores.js"
 
   export async function preload() {
     const response = await this.fetch("moviesWithPosters.json")
@@ -56,6 +56,7 @@
 
 {#if $completedChoices}
   <h1>Results</h1>
+  <div>{$userChoices}</div>
 {/if}
 
 {#if !$completedChoices}

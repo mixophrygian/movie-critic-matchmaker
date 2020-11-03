@@ -1,4 +1,4 @@
-import { goto } from '@sapper/app';
+import { userChoices } from '../stores.js'
 
 export function pick20RandomMovies() {
   // TODO revert this before publishing
@@ -30,9 +30,11 @@ export function recordUserChoice(directionInt, title) {
   switch (directionInt) {
     case 2:
       console.log('swiped left', title)
+      userChoices.update(choices => [...choices, { title, broadRating: "rotten" }])
       break;
     case 4:
       console.log('swiped right', title)
+      userChoices.update(choices => [...choices, { title, broadRating: "fresh" }])
       break;
     case 8:
       console.log('swiped up', title)

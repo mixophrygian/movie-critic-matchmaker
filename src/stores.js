@@ -10,7 +10,7 @@ export const randomMovies = derived(allMovies, ($allMovies, set) => {
     set(randomMoviesFromIndexes)
 })
 
-export const userChoices = writable({})
+export const userChoices = writable([])
 
 export const completedChoices = writable(false)
 
