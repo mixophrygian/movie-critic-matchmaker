@@ -6,7 +6,10 @@
 
   const agreedNames = agreed.map((name) => name[0]).join("\n")
   const disagreedNames = disagreed.map((name) => name[0]).join("\n")
-  console.log(agreedNames)
+
+  function reload() {
+    location.reload()
+  }
 </script>
 
 <style>
@@ -40,6 +43,15 @@
   .disagreedContainer {
   }
 
+  button {
+    background: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 2rem;
+    margin-top: 2rem;
+    font-size: 18px;
+  }
+
   h2 {
     margin-bottom: 2rem;
   }
@@ -60,4 +72,5 @@
       <div class="nameContainer">{disagreedNames}</div>
     </div>
   </div>
+  <button on:click={reload}>again!</button>
 </div>

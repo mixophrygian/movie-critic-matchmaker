@@ -19,7 +19,7 @@
 </script>
 
 <script>
-  import { fade, fly } from "svelte/transition"
+  import { fly } from "svelte/transition"
   import { onDestroy, onMount } from "svelte"
   import { Carousel } from "../../_helpers/carousel.ts"
   import {
@@ -28,6 +28,7 @@
   } from "../../_helpers/matchCriticsToUserInput"
   import StartCard from "../../components/StartCard.svelte"
   import Results from "../../components/Results.svelte"
+  import NoMatches from "../../components/NoMatches.svelte"
 
   export let movies
   export let critics
@@ -96,7 +97,11 @@
 {#if $completedChoices}
   <!-- TODO: fade in? -->
   <div in:fly={{ y: 10, duration: 500 }} class="resultsPage">
-    <Results {agreed} {disagreed} />
+    {#if agreed.length}
+      <Results {agreed} {disagreed} />
+    {:else}
+      <NoMatches />
+    {/if}
   </div>
 {/if}
 
