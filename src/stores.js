@@ -1,4 +1,4 @@
-import { writable, readable, derived } from 'svelte/store';
+import { writable, derived } from 'svelte/store';
 import { pick20RandomMovies } from './_helpers/utils.ts'
 
 export const allMovies = writable([])

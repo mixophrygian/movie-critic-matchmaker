@@ -49,10 +49,6 @@
     text-align: center;
     font-size: xx-large;
   }
-
-  .skipText {
-    font-size: medium;
-  }
 </style>
 
 <div class="card startCard">

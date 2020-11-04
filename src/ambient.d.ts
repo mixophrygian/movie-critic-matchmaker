@@ -2,7 +2,7 @@
  * These declarations tell TypeScript that we allow import of images, e.g.
  * ```
 		<script lang='ts'>
-			import successkid from 'images/successkid.jpg';
+			import trash from 'images/trash.png';
 		</script>
 
 		<img src="{successkid}">

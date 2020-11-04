@@ -1,20 +1,15 @@
 {
-	"background_color": "#ffffff",
-	"theme_color": "#333333",
-	"name": "TODO",
-	"short_name": "TODO",
-	"display": "minimal-ui",
-	"start_url": "/",
-	"icons": [
-		{
-			"src": "logo-192.png",
-			"sizes": "192x192",
-			"type": "image/png"
-		},
-		{
-			"src": "logo-512.png",
-			"sizes": "512x512",
-			"type": "image/png"
-		}
-	]
+  "background_color": "#8b0000",
+  "theme_color": "#333333",
+  "name": "Music Critic Matchmaker",
+  "short_name": "MCMM",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    }
+  ]
 }
