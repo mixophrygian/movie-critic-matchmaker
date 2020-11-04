@@ -4,9 +4,6 @@
   export let segment
 
   let width
-  $: {
-    console.log(width)
-  }
 </script>
 
 <style>

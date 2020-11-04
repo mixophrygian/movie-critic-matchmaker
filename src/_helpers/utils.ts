@@ -29,18 +29,14 @@ function shuffle(array) {
 export function recordUserChoice(directionInt, title) {
   switch (directionInt) {
     case 2:
-      console.log('swiped left', title)
       userChoices.update(choices => [...choices, { title, broadRating: "rotten" }])
       break;
     case 4:
-      console.log('swiped right', title)
       userChoices.update(choices => [...choices, { title, broadRating: "fresh" }])
       break;
     case 8:
-      console.log('swiped up', title)
       break;
     default:
-      console.log('swiped some other way', directionInt, title)
   }
 }
 
@@ -48,5 +44,4 @@ export function recordUserChoice(directionInt, title) {
 export function showResults() {
   // calculate matching and unmatching critics
   // navigate to a "results" page
-  console.log('show results')
 }
