@@ -1,10 +1,14 @@
 <script>
-  import successkid from "images/successkid.jpg"
+  import audience from "images/audience.jpg"
+  import { goto } from "@sapper/app"
+
+  function rate() {
+    goto("/rate")
+  }
 </script>
 
 <style>
   h1,
-  figure,
   p {
     text-align: center;
     margin: 0 auto;
@@ -12,18 +16,11 @@
 
   h1 {
     font-size: 2.8em;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin: 0 0 0.5em 0;
-  }
-
-  figure {
-    margin: 0 0 1em 0;
+    margin-bottom: 0.5em;
   }
 
   img {
     width: 100%;
-    max-width: 400px;
     margin: 0 0 1em 0;
   }
 
@@ -31,23 +28,55 @@
     margin: 1em auto;
   }
 
+  .button {
+    background: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 2rem;
+    margin-top: 2rem;
+    font-size: 18px;
+  }
+
+  @media (max-width: 321px) {
+    .button {
+      margin-top: 1rem;
+    }
+  }
+
   @media (min-width: 480px) {
     h1 {
       font-size: 4em;
     }
   }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    padding: 2rem;
+  }
 </style>
 
 <svelte:head>
-  <title>Sapper project template</title>
+  <title>Movie Critic Matchmaker</title>
 </svelte:head>
-<h1>Movie Critic Matchmaker</h1>
+<div class="container">
+  <div class="content">
+    <h1>Movie Critic Matchmaker</h1>
 
-<figure>
-  <img alt="Success Kid" src={successkid} />
-  <figcaption>
-    Find out which top movie critics you agree with the most...and the least!
-  </figcaption>
-</figure>
+    <img alt="Critics who disagree" src={audience} />
+    <p>
+      Find out which top movie critics you agree with the most...and the least!
+      Rate these movies as rotten or fresh to find out.
+    </p>
 
-<p><a href="rate">Start</a></p>
+    <button on:click={rate} class="button">Start</button>
+  </div>
+</div>

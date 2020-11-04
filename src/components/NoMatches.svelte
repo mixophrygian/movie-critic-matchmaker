@@ -37,6 +37,7 @@
   <h1>Whoops!</h1>
   <div class="copy">
     You skipped every movie. Rate movies to see which critics you match with.
+    Or, ya know, go see some of these movies.
   </div>
-  <button on:click={reload} class="button">Got it!</button>
+  <button on:click={reload} class="button">Try again</button>
 </div>

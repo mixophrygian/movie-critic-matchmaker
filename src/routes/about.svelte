@@ -36,7 +36,8 @@
     <h2>Why are the results different each time?</h2>
     <p>
       Each visit you'll see 20 random movies from a list of 40. Not all critics
-      have reviewed all movies, so you'll be matched with ones who have.
+      have reviewed the movies you rate, so you'll be matched with ones who
+      have.
     </p>
 
     <h2>Why isn't my favorite movie on this list?</h2>
@@ -54,9 +55,9 @@
     <p>
       This is another novelty site by
       <a href="https://twitter.com/EleanorClarinet">Eleanor</a>, but it was
-      requested by her husband, so I guess you can blame them both.
+      inspired by her cinephile husband, so I guess you can blame them both.
     </p>
     <h2>Speak nerdy to me</h2>
-    <p>This was built using Sapper and Svelte!</p>
+    <p>This site was built using Sapper and Svelte!</p>
   </div>
 </div>

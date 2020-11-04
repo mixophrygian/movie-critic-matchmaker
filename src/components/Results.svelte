@@ -50,6 +50,7 @@
     padding: 0.5rem 2rem;
     margin-top: 2rem;
     font-size: 18px;
+    align-self: center;
   }
 
   h2 {

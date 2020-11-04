@@ -1,11 +1,19 @@
 <script>
   import Nav from "../components/Nav.svelte"
+  import UseAPhone from "../components/UseAPhone.svelte"
   export let segment
+
+  let width
+  $: {
+    console.log(width)
+  }
 </script>
 
 <style>
   :global(body) {
     background-color: darkred;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
   main {
     display: flex;
@@ -19,7 +27,12 @@
   }
 </style>
 
-<main>
-  <Nav {segment} />
-  <slot />
-</main>
+<svelte:window bind:innerWidth={width} />
+{#if width > 411}
+  <UseAPhone />
+{:else}
+  <main>
+    <Nav {segment} />
+    <slot />
+  </main>
+{/if}
