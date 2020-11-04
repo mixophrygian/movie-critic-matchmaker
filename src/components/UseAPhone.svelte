@@ -10,6 +10,13 @@
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    height: 80vh;
+  }
+
+  .contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   p {
@@ -23,6 +30,8 @@
 </style>
 
 <div class="container">
-  <img src={trash} alt="trash" />
-  <p>This site is made for mobile devices in portrait mode! Theeeeenks.</p>
+  <div class="contents">
+    <img src={trash} alt="trash" />
+    <p>This site is made for mobile devices in portrait mode! Theeeeenks.</p>
+  </div>
 </div>
