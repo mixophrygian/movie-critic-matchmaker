@@ -36,11 +36,10 @@
     display: flex;
   }
 
-  .nameContainer {
-    display: flex;
-  }
-
+  .nameContainer,
   .disagreedContainer {
+    display: flex;
+    flex-direction: column;
   }
 
   button {
@@ -55,6 +54,35 @@
 
   h2 {
     margin-bottom: 2rem;
+    font-weight: bold;
+  }
+
+  .name {
+    line-height: 1.25;
+  }
+
+  .stats {
+    font-size: x-small;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 320px) {
+    .leasth2 {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 19px;
+    }
+
+    .trash {
+      max-width: 90px;
+    }
+
+    .popcorn {
+      max-width: 100px;
+    }
   }
 </style>
 
@@ -63,14 +91,34 @@
     <h2>Your favorite critics</h2>
     <div class="iconAndText">
       <img class="popcorn" alt="popcorn and drink" src={popcornDrink} />
-      <div class="nameContainer">{agreedNames}</div>
+      <div class="nameContainer">
+        {#each agreed as name}
+          <div class="name">{name[0]}</div>
+          <div class="stats">
+            (agreed on
+            {name[1].moviesAgreed.length}
+            movie{name[1].moviesAgreed.length == 1 ? '' : 's'}:
+            {name[1].moviesAgreed.map((movie) => movie.title)})
+          </div>
+        {/each}
+      </div>
     </div>
   </div>
   <div class="disagreedContainer">
-    <h2>Your least-favorite critics</h2>
+    <h2 class="leasth2">Your least-favorite critics</h2>
     <div class="iconAndText">
       <img class="trash" alt="trash" src={trash} />
-      <div class="nameContainer">{disagreedNames}</div>
+      <div class="nameContainer">
+        {#each disagreed as name}
+          <div class="name">{name[0]}</div>
+          <div class="stats">
+            (disagreed on
+            {name[1].moviesDisagreed.length}
+            movie{name[1].moviesDisagreed.length == 1 ? '' : 's'}:
+            {name[1].moviesDisagreed.map((movie) => movie.title)})
+          </div>
+        {/each}
+      </div>
     </div>
   </div>
   <button on:click={reload}>again!</button>
