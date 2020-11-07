@@ -1,6 +1,6 @@
 /* LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
 
-import { recordUserChoice, showResults } from '../_helpers/utils.ts'
+import { recordUserChoice } from '../_helpers/utils.ts'
 import MovieCard from "../components/MovieCard.svelte"
 
 const twentyMovieTitles = ["Avatar", "Cloud Atlas", "Joker"]
@@ -192,9 +192,7 @@ export class Carousel {
                     this.board.removeChild(this.topCard)
                     if (!this.board.firstChild) {
                         // calculate results
-                        // show results
                         completedChoices.update(() => true)
-                        showResults()
                     }
                     // handle gestures on new top card
                     this.handle()
