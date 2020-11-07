@@ -27,7 +27,7 @@
   <div>
     <h2>How does it work?</h2>
     <p>
-      We selected 40 polarizing movies made in the last five years. Every visit
+      We selected 98 polarizing movies made in the last five years. Every visit
       you'll see 20 random movies from this list -- of the movies you rated,
       we'll find the top critics who you agree with the most. We'll also show
       you the critics you disagree with the most.

@@ -11,6 +11,7 @@
   img {
     width: 100%;
     max-width: 50px;
+    max-height: 50px;
   }
 
   .hands {

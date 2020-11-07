@@ -10,6 +10,12 @@
   function reload() {
     location.reload()
   }
+
+  let expanded
+
+  function toggleCollapse(e, name) {
+    expanded = name
+  }
 </script>
 
 <style>
@@ -17,7 +23,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    justify-content: space-around;
+    /* justify-content: space-around; */
   }
   img {
     margin-right: 1rem;
@@ -36,10 +42,13 @@
     display: flex;
   }
 
-  .nameContainer,
-  .disagreedContainer {
+  .nameContainer {
     display: flex;
     flex-direction: column;
+  }
+
+  .agreedContainer {
+    margin-bottom: 3rem;
   }
 
   button {
@@ -47,9 +56,9 @@
     border: none;
     border-radius: 5px;
     padding: 0.5rem 2rem;
-    margin-top: 2rem;
     font-size: 18px;
     align-self: center;
+    margin-top: 2rem;
   }
 
   h2 {
@@ -59,17 +68,42 @@
 
   .name {
     line-height: 1.25;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
   }
 
   .stats {
-    font-size: x-small;
+    font-size: small;
     padding-left: 1rem;
     margin-bottom: 1rem;
   }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  .collapse {
+    display: block;
+    max-height: 0px;
+    overflow: hidden;
+    font-size: x-small;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+  }
+
+  .collapse.show {
+    max-height: 99em;
+    margin-top: 0.5rem;
+    transition: max-height 0.5s ease-in-out;
+  }
+
   @media (max-width: 320px) {
     .leasth2 {
       margin-top: 1rem;
       margin-bottom: 1rem;
+    }
+
+    .stats {
+      padding-left: 0.5rem;
     }
 
     h2 {
@@ -83,6 +117,18 @@
     .popcorn {
       max-width: 100px;
     }
+
+    .stats {
+      font-size: smaller;
+    }
+
+    .button {
+      margin-top: 0;
+    }
+
+    .agreedContainer {
+      margin-bottom: 0;
+    }
   }
 </style>
 
@@ -92,13 +138,21 @@
     <div class="iconAndText">
       <img class="popcorn" alt="popcorn and drink" src={popcornDrink} />
       <div class="nameContainer">
-        {#each agreed as name}
-          <div class="name">{name[0]}</div>
-          <div class="stats">
-            (agreed on
-            {name[1].moviesAgreed.length}
-            movie{name[1].moviesAgreed.length == 1 ? '' : 's'}:
-            {name[1].moviesAgreed.map((movie) => movie.title)})
+        {#each agreed as name, index}
+          <div
+            role="button"
+            on:click={(e) => toggleCollapse(e, name[0])}
+            class="tapContainer">
+            <div class="name">{name[0]}</div>
+            <div class="stats">
+              <span class="underline">Agreed on
+                {name[1].moviesAgreed.length}
+                movie{name[1].moviesAgreed.length == 1 ? '' : 's'}
+              </span>
+              <div class={expanded === name[0] ? 'show collapse' : 'collapse'}>
+                {name[1].moviesAgreed.map((movie) => movie.title).join(', ')}
+              </div>
+            </div>
           </div>
         {/each}
       </div>
@@ -109,13 +163,23 @@
     <div class="iconAndText">
       <img class="trash" alt="trash" src={trash} />
       <div class="nameContainer">
-        {#each disagreed as name}
-          <div class="name">{name[0]}</div>
-          <div class="stats">
-            (disagreed on
-            {name[1].moviesDisagreed.length}
-            movie{name[1].moviesDisagreed.length == 1 ? '' : 's'}:
-            {name[1].moviesDisagreed.map((movie) => movie.title)})
+        {#each disagreed as name, index}
+          <div
+            on:click={(e) => toggleCollapse(e, name[0])}
+            role="button"
+            lass="tapContainer">
+            <div class="name">{name[0]}</div>
+            <div class="stats">
+              <span class="underline">
+                Disagreed on
+                {name[1].moviesDisagreed.length}
+                movie{name[1].moviesDisagreed.length == 1 ? '' : 's'}
+              </span>
+
+              <div class={expanded === name[0] ? 'show collapse' : 'collapse'}>
+                {name[1].moviesDisagreed.map((movie) => movie.title).join(', ')}
+              </div>
+            </div>
           </div>
         {/each}
       </div>

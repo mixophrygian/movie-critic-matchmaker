@@ -16,7 +16,6 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    height: 100vh;
     background-color: darkred;
     color: white;
     margin: 0 auto;
