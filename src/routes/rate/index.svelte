@@ -7,7 +7,7 @@
   } from "../../stores.js"
 
   export async function preload() {
-    const response = await this.fetch("moviesWithPosters.json")
+    const response = await this.fetch("mostReviewedMoviesWithPosters.json")
     const movies = await response.json()
     const criticObjects = await this.fetch("consolidatedCriticObjects.json")
     const critics = await criticObjects.json()
