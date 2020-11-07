@@ -23,7 +23,6 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    /* justify-content: space-around; */
   }
   img {
     margin-right: 1rem;
