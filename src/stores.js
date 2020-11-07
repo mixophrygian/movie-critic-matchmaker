@@ -1,10 +1,10 @@
 import { writable, derived } from 'svelte/store';
-import { pick20RandomMovies } from './_helpers/utils.ts'
+import { pickNRandomMovies, HOW_MANY_MOVIES_TO_SHOW } from './_helpers/utils.ts'
 
 export const allMovies = writable([])
 
 export const randomMovies = derived(allMovies, ($allMovies, set) => {
-    const randomIndexes = pick20RandomMovies()
+    const randomIndexes = pickNRandomMovies(HOW_MANY_MOVIES_TO_SHOW)
     const randomMoviesFromIndexes = randomIndexes.map(index => $allMovies[index])
     set(randomMoviesFromIndexes)
 })
