@@ -43,8 +43,3 @@ export function recordUserChoice(directionInt, title) {
   }
 }
 
-
-export function showResults() {
-  // calculate matching and unmatching critics
-  // navigate to a "results" page
-}
