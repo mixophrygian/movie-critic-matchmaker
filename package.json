@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
-    "export": "sapper export --legacy",
-    "start": "node __sapper__/build"
+    "export": "sapper export",
+    "start": "node __sapper__/build",
+    "gzip": "rm -rf ./__sapper__/*-gzip && gzipper compress -v --output-file-format [filename].[ext] ./__sapper__/export ./__sapper__/export-gzip"
   },
   "dependencies": {
     "compression": "^1.7.1",
