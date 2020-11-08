@@ -1,5 +1,7 @@
 <script>
   import audience from "images/audience.jpg"
+  import facebook from "images/facebook.jpg"
+  import twitter from "images/twitter.jpg"
   import { goto } from "@sapper/app"
 
   function rate() {
