@@ -63,8 +63,9 @@
 <style>
   #board {
     width: 100vw;
-    height: 100vh;
+    height: 94vh;
     position: absolute;
+    top: 50px;
     overflow: hidden;
     background-color: transparent;
   }
@@ -73,7 +74,7 @@
     width: 300px;
     height: 445px;
     position: absolute;
-    top: 50%;
+    top: 43%;
     left: 50%;
     border-radius: 1%;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);

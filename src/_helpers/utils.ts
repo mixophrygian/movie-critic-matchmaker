@@ -1,5 +1,5 @@
 import { userChoices } from '../stores.js'
-export const HOW_MANY_MOVIES_TO_SHOW = 20
+export const HOW_MANY_MOVIES_TO_SHOW = 40
 const TOTAL_MOVIES = 98
 
 export function pickNRandomMovies(N) {

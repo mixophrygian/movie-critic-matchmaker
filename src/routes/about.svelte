@@ -27,23 +27,22 @@
   <div>
     <h2>How does it work?</h2>
     <p>
-      We selected 98 polarizing movies made in the last five years. Every visit
-      you'll see 20 random movies from this list -- of the movies you rated,
-      we'll find the top critics who you agree with the most. We'll also show
-      you the critics you disagree with the most.
+      We selected about a hundred polarizing movies made in the last five years.
+      Every visit you'll see fourty random movies from this list -- of the
+      movies you rated, we'll find the top critics who you agree with the most.
+      We'll also show you the critics you disagree with the most.
     </p>
 
     <h2>Why are the results different each time?</h2>
     <p>
-      Each visit you'll see 20 random movies from a list of 40. Not all critics
-      have reviewed the movies you rate, so you'll be matched with ones who
-      have.
+      Not all critics have reviewed the movies you rate, but you'll be matched
+      with ones who have.
     </p>
 
     <h2>Why isn't my favorite movie on this list?</h2>
     <p>
       Maybe it's not polarizing enough, maybe it doesn't have enough official
-      reviews by top-critics. Listen, my husband made this list so take it up
+      reviews by top critics. Listen, my husband made this list so take it up
       with him.
     </p>
     <h2>Where's the data from?</h2>
