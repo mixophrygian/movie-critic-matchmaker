@@ -53,7 +53,7 @@
 </style>
 
 <div class="card startCard">
-  Swipe to rate
+  Swipe to begin!
   <div class="freshOrRottenContainer">
     <img alt="rotten" src={rotten} />
     <img alt="swipe left for rotten" class="hands" src={swipeLeft} />
