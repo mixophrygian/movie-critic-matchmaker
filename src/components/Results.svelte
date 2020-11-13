@@ -1,6 +1,6 @@
 <script>
-  import trash from "images/trash.png"
-  import popcornDrink from "images/popcorn-drink.png"
+  import fresh from "images/fresh.png"
+  import rotten from "images/rotten.png"
   export let agreed
   export let disagreed
 
@@ -29,11 +29,11 @@
     align-self: start;
   }
 
-  .popcorn {
+  .fresh {
     max-width: 130px;
   }
 
-  .trash {
+  .rotten {
     max-width: 110px;
   }
 
@@ -109,11 +109,11 @@
       font-size: 19px;
     }
 
-    .trash {
+    .rotten {
       max-width: 90px;
     }
 
-    .popcorn {
+    .fresh {
       max-width: 100px;
     }
 
@@ -135,7 +135,7 @@
   <div class="agreedContainer">
     <h2>Your favorite critics</h2>
     <div class="iconAndText">
-      <img class="popcorn" alt="popcorn and drink" src={popcornDrink} />
+      <img alt="fresh" src={fresh} />
       <div class="nameContainer">
         {#each agreed as name, index}
           <div
@@ -160,7 +160,7 @@
   <div class="disagreedContainer">
     <h2 class="leasth2">Your least-favorite critics</h2>
     <div class="iconAndText">
-      <img class="trash" alt="trash" src={trash} />
+      <img class="rotten" alt="rotten" src={rotten} />
       <div class="nameContainer">
         {#each disagreed as name, index}
           <div

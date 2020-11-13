@@ -5,8 +5,8 @@ const TOTAL_MOVIES = 98
 export function pickNRandomMovies(N) {
   let arr = Array.from(Array(TOTAL_MOVIES).keys()).map(i => i);
   // for testing
-  //let out = shuffle([1, 18, 23])
-  let out = shuffle(arr)
+  let out = shuffle([1, 18, 23])
+  //let out = shuffle(arr)
   return out.slice(0, N + 1)
 }
 

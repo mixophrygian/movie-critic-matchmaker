@@ -1,5 +1,5 @@
 <script>
-  import trash from "images/trash.png"
+  import rotten from "images/rotten.png"
 </script>
 
 <style>
@@ -31,7 +31,7 @@
 
 <div class="container">
   <div class="contents">
-    <img src={trash} alt="trash" />
+    <img src={rotten} alt="rotten" />
     <p>This site is made for mobile devices in portrait mode! Theeeeenks.</p>
   </div>
 </div>

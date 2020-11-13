@@ -8,7 +8,8 @@
 
 <style>
   :global(body) {
-    background-color: darkred;
+    background-color: #333;
+    height: 100vh;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
@@ -16,7 +17,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    background-color: darkred;
+    background-color: #333;
     color: white;
     margin: 0 auto;
     box-sizing: border-box;

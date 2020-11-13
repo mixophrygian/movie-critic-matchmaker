@@ -1,7 +1,5 @@
 <script>
-  import audience from "images/audience.jpg"
   import facebook from "images/facebook.jpg"
-  import twitter from "images/twitter.jpg"
   import { goto } from "@sapper/app"
 
   function rate() {
@@ -28,6 +26,7 @@
 
   p {
     margin: 1em auto;
+    font-size: 1rem;
   }
 
   .button {
@@ -73,7 +72,7 @@
   <div class="content">
     <h1>Movie Critic Matchmaker</h1>
 
-    <img alt="Critics who disagree" src={audience} />
+    <img alt="Critics who disagree" src={facebook} />
     <p>
       Find out which top movie critics you agree with the most...and the least!
       Rate these movies as rotten or fresh to find out.
