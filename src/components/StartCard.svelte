@@ -11,6 +11,11 @@
     margin: 1rem;
   }
 
+  .content {
+    height: 100%;
+    padding: 2rem;
+  }
+
   .freshOrRottenContainer {
     display: flex;
     justify-content: space-around;
@@ -31,12 +36,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 3rem;
   }
 
   .startCard {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     background: #505050;
     color: white;
     text-align: center;
@@ -45,16 +50,18 @@
 </style>
 
 <div class="card startCard">
-  <div class="freshOrRottenContainer">
-    <div class="rotten">
-      <img alt="rotten" src={rotten} />
-      Swipe left for rotten
+  <div class="content">
+    <div class="freshOrRottenContainer">
+      <div class="rotten">
+        <img alt="rotten" src={rotten} />
+        Swipe left for rotten
+      </div>
+      <div class="fresh">
+        <img alt="fresh" src={fresh} />
+        Swipe right for fresh
+      </div>
     </div>
-    <div class="fresh">
-      <img alt="fresh" src={fresh} />
-      Swipe right for fresh
-    </div>
+    <div class="skipContainer">Swipe up to skip</div>
+    <div class="beginContainer">Swipe anywhere to begin!</div>
   </div>
-  <div class="skipContainer">Swipe up to skip</div>
-  Swipe anywhere to begin!
 </div>

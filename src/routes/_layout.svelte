@@ -7,6 +7,9 @@
 </script>
 
 <style>
+  :global(#sapper) {
+    height: 100%;
+  }
   :global(body) {
     background-color: #333;
     height: 100vh;
@@ -21,6 +24,7 @@
     color: white;
     margin: 0 auto;
     box-sizing: border-box;
+    height: 100%;
   }
 </style>
 

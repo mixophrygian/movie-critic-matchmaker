@@ -27,14 +27,7 @@
   img {
     margin-right: 1rem;
     align-self: start;
-  }
-
-  .fresh {
-    max-width: 130px;
-  }
-
-  .rotten {
-    max-width: 110px;
+    max-width: 50px;
   }
 
   .iconAndText {
@@ -109,14 +102,6 @@
       font-size: 19px;
     }
 
-    .rotten {
-      max-width: 90px;
-    }
-
-    .fresh {
-      max-width: 100px;
-    }
-
     .stats {
       font-size: smaller;
     }
@@ -135,7 +120,7 @@
   <div class="agreedContainer">
     <h2>Your favorite critics</h2>
     <div class="iconAndText">
-      <img alt="fresh" src={fresh} />
+      <img class="fresh" alt="fresh" src={fresh} />
       <div class="nameContainer">
         {#each agreed as name, index}
           <div
