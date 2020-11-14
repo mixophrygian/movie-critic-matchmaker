@@ -15,8 +15,9 @@
   }
 
   h1 {
-    font-size: 2.8em;
+    font-size: 2em;
     margin-bottom: 0.5em;
+    letter-spacing: 1px;
   }
 
   img {
@@ -31,23 +32,12 @@
 
   .button {
     background: white;
+    color: black;
     border: none;
-    border-radius: 5px;
-    padding: 0.5rem 2rem;
-    margin-top: 2rem;
-    font-size: 18px;
-  }
-
-  @media (max-width: 321px) {
-    .button {
-      margin-top: 1rem;
-    }
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      font-size: 4em;
-    }
+    border-radius: 20px;
+    padding: 0.45rem 1.25rem;
+    font-family: "Inter-SemiBold";
+    font-size: 14px;
   }
 
   .content {
@@ -56,12 +46,31 @@
     align-items: center;
   }
 
+  .description {
+    font-size: 14px;
+  }
+
   .container {
     display: flex;
     flex-direction: column;
     flex: 1;
-    justify-content: center;
     padding: 2rem;
+  }
+
+  @media (max-width: 321px) {
+    .button {
+      margin-top: 1rem;
+    }
+
+    .container {
+      padding: 1rem;
+    }
+  }
+
+  @media (min-width: 480px) {
+    h1 {
+      font-size: 4em;
+    }
   }
 </style>
 
@@ -70,14 +79,14 @@
 </svelte:head>
 <div class="container">
   <div class="content">
-    <h1>Movie Critic Matchmaker</h1>
+    <h1>Who's your movie critic match?</h1>
 
     <img alt="Critics who disagree" src={facebook} />
-    <p>
+    <p class="description">
       Find out which top movie critics you agree with the most...and the least!
       Rate these movies as rotten or fresh to find out.
     </p>
 
-    <button on:click={rate} class="button">Start</button>
+    <button on:click={rate} class="button">Find my match</button>
   </div>
 </div>
