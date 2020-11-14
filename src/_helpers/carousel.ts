@@ -3,7 +3,6 @@
 import { recordUserChoice } from '../_helpers/utils.ts'
 import MovieCard from "../components/MovieCard.svelte"
 
-const twentyMovieTitles = ["Avatar", "Cloud Atlas", "Joker"]
 import { completedChoices, randomMovies } from '../stores.js'
 
 let randomMoviesValue

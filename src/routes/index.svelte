@@ -3,7 +3,7 @@
   import { goto } from "@sapper/app"
 
   function rate() {
-    goto("/rate")
+    goto("/instructions")
   }
 </script>
 
@@ -23,6 +23,7 @@
   img {
     width: 100%;
     min-width: 475px;
+    min-height: 240px;
     margin: 0 0 1em 0;
   }
 

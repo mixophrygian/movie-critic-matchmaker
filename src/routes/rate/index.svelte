@@ -26,7 +26,6 @@
     findCriticsWhoAgree,
     findCriticsWhoDisagree,
   } from "../../_helpers/matchCriticsToUserInput"
-  import StartCard from "../../components/StartCard.svelte"
   import Results from "../../components/Results.svelte"
   import NoMatches from "../../components/NoMatches.svelte"
 
@@ -107,7 +106,5 @@
 {/if}
 
 {#if !$completedChoices}
-  <div bind:this={board} id="board">
-    <StartCard />
-  </div>
+  <div bind:this={board} id="board" />
 {/if}

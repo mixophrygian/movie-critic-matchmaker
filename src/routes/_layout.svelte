@@ -46,12 +46,6 @@
   }
 </style>
 
-<svelte:head>
-  <link
-    href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
-    rel="stylesheet" />
-</svelte:head>
-
 <svelte:window bind:innerWidth={width} />
 {#if width > 415}
   <UseAPhone />

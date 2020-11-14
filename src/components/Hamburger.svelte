@@ -3,6 +3,11 @@
 </script>
 
 <style>
+  button {
+    border: none;
+    background-color: black;
+    color: white;
+  }
   svg {
     min-height: 16px;
     transition: transform 0.3s ease-in-out;
