@@ -1,5 +1,5 @@
 <script>
-  import facebook from "images/facebook.jpg"
+  import ratedMovies from "images/rated-movies.png"
   import { goto } from "@sapper/app"
 
   function rate() {
@@ -22,6 +22,7 @@
 
   img {
     width: 100%;
+    min-width: 475px;
     margin: 0 0 1em 0;
   }
 
@@ -35,9 +36,10 @@
     color: black;
     border: none;
     border-radius: 20px;
-    padding: 0.45rem 1.25rem;
+    padding: 0.3rem 1.45rem;
     font-family: "Inter-SemiBold";
     font-size: 14px;
+    margin-top: 1.5rem;
   }
 
   .content {
@@ -65,6 +67,10 @@
     .container {
       padding: 1rem;
     }
+
+    img {
+      min-width: 425px;
+    }
   }
 
   @media (min-width: 480px) {
@@ -81,7 +87,7 @@
   <div class="content">
     <h1>Who's your movie critic match?</h1>
 
-    <img alt="Critics who disagree" src={facebook} />
+    <img alt="Critics who disagree" src={ratedMovies} />
     <p class="description">
       Find out which top movie critics you agree with the most...and the least!
       Rate these movies as rotten or fresh to find out.

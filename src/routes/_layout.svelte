@@ -42,6 +42,7 @@
     margin: 0 auto;
     box-sizing: border-box;
     height: 100%;
+    overflow: hidden;
   }
 </style>
 
