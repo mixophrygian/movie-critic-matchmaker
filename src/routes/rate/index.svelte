@@ -71,7 +71,7 @@
 
   :global(.card) {
     width: 300px;
-    height: 445px;
+    height: 444px;
     position: absolute;
     top: 43%;
     left: 50%;
@@ -87,6 +87,14 @@
     flex-direction: column;
     flex: 1;
     padding: 2rem;
+  }
+
+  @media (max-width: 321px) {
+    :global(.card) {
+      width: 250px;
+      height: 369px;
+      background-size: 100%;
+    }
   }
 </style>
 
