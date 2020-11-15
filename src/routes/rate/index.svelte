@@ -24,6 +24,10 @@
   import { Carousel } from "../../_helpers/carousel.ts"
   import Results from "../../components/Results.svelte"
   import NoMatches from "../../components/NoMatches.svelte"
+  import {
+    findCriticsWhoAgree,
+    findCriticsWhoDisagree,
+  } from "../../_helpers/matchCriticsToUserInput"
 
   export let movies
   export let critics
@@ -47,12 +51,19 @@
     carousel = new Carousel(board)
   })
 
+  $: {
+    if ($completedChoices) {
+      agreed = findCriticsWhoAgree($criticObjects)($userChoices)
+      disagreed = findCriticsWhoDisagree($criticObjects)($userChoices)
+    }
+  }
+
   function skipCurrentMovie() {
     const board = document.querySelector("#board")
-    board.removeChild(board.lastChild)
     if (!board.firstChild) {
       completedChoices.update(() => true)
     } else {
+      board.removeChild(board.lastChild)
       carousel.handle()
     }
   }
