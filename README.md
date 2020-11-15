@@ -1,6 +1,6 @@
 # Movie critic Matchmaker
 
-The front end for movie critic match maker, a swiping-quiz to find out which top critics on rotten tomatos you agree with the most. And also which critics you disagree with the most!
+The front end for movie critic match maker, a swiping-quiz to find out which top critics on rotten tomatos you agree with the most. And also which critics you disagree with the most! This was created using Sapper, a recently-abandoned Svelte project template. The rest of this readme is boilerplate from the Sapper new project auto-generated readme.
 
 ### Running the project
 
