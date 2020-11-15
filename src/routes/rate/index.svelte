@@ -78,7 +78,8 @@
     border-radius: 3%;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
     background-color: transparent;
-    color: black;
+    background-size: 100%;
+    color: #110309;
     border: 12px solid white;
     transform: translateX(-50%) translateY(-50%);
   }
@@ -86,6 +87,23 @@
   :global(.card) {
     width: 100%;
     height: 100%;
+  }
+
+  .skip {
+    position: absolute;
+    left: 40%;
+    bottom: 12%;
+    color: #c8c8c8;
+    background-color: #261a1f;
+    border: 3px solid #261a1f;
+    font-size: 14px;
+    border-radius: 20px;
+    padding: 0.3rem 1.45rem;
+    font-family: "Inter-SemiBold";
+  }
+
+  .skip:active {
+    color: #8f8f8f;
   }
 
   .resultsPage {
@@ -96,10 +114,14 @@
   }
 
   @media (max-width: 321px) {
-    :global(.card) {
+    :global(.frame) {
       width: 250px;
       height: 369px;
-      background-size: 100%;
+    }
+
+    .skip {
+      bottom: 7%;
+      left: 37%;
     }
   }
 </style>
@@ -121,4 +143,5 @@
 
 {#if !$completedChoices}
   <div in:fade={{ delay: 150, duration: 550 }} bind:this={board} id="board" />
+  <button class="skip">Skip</button>
 {/if}

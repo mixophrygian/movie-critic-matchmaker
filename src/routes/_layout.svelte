@@ -28,7 +28,7 @@
     height: 100%;
   }
   :global(body) {
-    background-color: #000;
+    background-color: #110309;
     height: 100vh;
     font-family: Inter, Helvetica, Arial, sans-serif;
     padding: 0;
@@ -39,7 +39,7 @@
     color: black;
     border: 3px solid white;
     border-radius: 20px;
-    padding: 0.3rem 1.45rem;
+    padding: 0.2rem 1rem;
     font-family: "Inter-SemiBold";
     font-size: 14px;
     margin-top: 1.5rem;
@@ -55,7 +55,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    background-color: #000;
+    background-color: #110309;
     color: white;
     margin: 0 auto;
     box-sizing: border-box;

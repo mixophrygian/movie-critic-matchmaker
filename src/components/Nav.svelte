@@ -11,7 +11,7 @@
     align-items: center;
     font-family: Inter;
     padding: 0 1em;
-    background-color: #000;
+    background-color: #110309;
     color: white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   }
@@ -28,7 +28,7 @@
 </style>
 
 <header>
-  <a href=".">Movie critic Matchmaker</a>
+  <a href=".">Movie Critic Matchmaker</a>
   <nav>
     <Hamburger bind:open={sidebar} />
   </nav>
