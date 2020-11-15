@@ -117,11 +117,15 @@
     color: #8f8f8f;
   }
 
+  /* in case users want to copy the name of their favorite critic */
   .resultsPage {
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 2rem;
+    user-select: text;
+    -webkit-touch-callout: text;
+    -webkit-user-select: text;
   }
 
   @media (max-width: 321px) {

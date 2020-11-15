@@ -24,7 +24,6 @@
   img {
     width: 100%;
     min-width: 475px;
-    min-height: 240px;
     margin: 0 0 1em 0;
   }
 
@@ -74,7 +73,7 @@
 <svelte:head>
   <title>Movie Critic Matchmaker</title>
 </svelte:head>
-<div transition:fade={{ delay: 50, duration: 450 }} class="container">
+<div in:fade={{ delay: 50, duration: 450 }} class="container">
   <div class="content">
     <h1>Who's your movie critic match?</h1>
 
