@@ -22,10 +22,6 @@
   import { fly, fade } from "svelte/transition"
   import { onDestroy, onMount } from "svelte"
   import { Carousel } from "../../_helpers/carousel.ts"
-  import {
-    findCriticsWhoAgree,
-    findCriticsWhoDisagree,
-  } from "../../_helpers/matchCriticsToUserInput"
   import Results from "../../components/Results.svelte"
   import NoMatches from "../../components/NoMatches.svelte"
 
@@ -49,14 +45,6 @@
   onMount(() => {
     let carousel = new Carousel(board)
   })
-
-  $: {
-    if ($completedChoices) {
-      agreed = findCriticsWhoAgree($criticObjects)($userChoices)
-      disagreed = findCriticsWhoDisagree($criticObjects)($userChoices)
-      console.log(agreed, disagreed)
-    }
-  }
 </script>
 
 <style>
