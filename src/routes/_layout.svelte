@@ -33,6 +33,24 @@
     font-family: Inter, Helvetica, Arial, sans-serif;
     padding: 0;
   }
+
+  :global(.button) {
+    background: white;
+    color: black;
+    border: 3px solid white;
+    border-radius: 20px;
+    padding: 0.3rem 1.45rem;
+    font-family: "Inter-SemiBold";
+    font-size: 14px;
+    margin-top: 1.5rem;
+  }
+
+  :global(.button:active) {
+    background: black;
+    color: white;
+    border-color: white;
+  }
+
   main {
     display: flex;
     flex-direction: column;
