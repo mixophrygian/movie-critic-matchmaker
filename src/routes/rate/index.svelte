@@ -97,6 +97,7 @@
   :global(.card) {
     width: 100%;
     height: 100%;
+    background-size: 100%;
   }
 
   .skip {
@@ -173,6 +174,6 @@
 {/if}
 
 {#if !$completedChoices}
-  <div in:fade={{ delay: 150, duration: 550 }} bind:this={board} id="board" />
+  <div in:fade={{ delay: 250, duration: 550 }} bind:this={board} id="board" />
   <button on:click={skipCurrentMovie} class="skip">Skip</button>
 {/if}
