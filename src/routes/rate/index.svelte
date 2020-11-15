@@ -60,10 +60,10 @@
 
   function skipCurrentMovie() {
     const board = document.querySelector("#board")
+    board.removeChild(board.lastChild)
     if (!board.firstChild) {
       completedChoices.update(() => true)
     } else {
-      board.removeChild(board.lastChild)
       carousel.handle()
     }
   }
