@@ -123,6 +123,27 @@
       left: 37%;
     }
   }
+
+  /* iphone 6, 7, 8 */
+  @media (min-height: 666px) {
+    .skip {
+      bottom: 7%;
+    }
+  }
+
+  /* iphone 8 plus */
+  @media (min-height: 735px) {
+    .skip {
+      bottom: 12%;
+    }
+  }
+
+  /* iphone X */
+  @media (min-height: 812px) {
+    .skip {
+      bottom: 16%;
+    }
+  }
 </style>
 
 <svelte:head>
