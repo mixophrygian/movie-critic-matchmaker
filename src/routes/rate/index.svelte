@@ -19,7 +19,7 @@
 </script>
 
 <script>
-  import { fly } from "svelte/transition"
+  import { fly, fade } from "svelte/transition"
   import { onDestroy, onMount } from "svelte"
   import { Carousel } from "../../_helpers/carousel.ts"
   import {
@@ -120,5 +120,5 @@
 {/if}
 
 {#if !$completedChoices}
-  <div bind:this={board} id="board" />
+  <div in:fade={{ delay: 150, duration: 550 }} bind:this={board} id="board" />
 {/if}

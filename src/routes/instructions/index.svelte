@@ -1,5 +1,6 @@
 <script>
   import instructions from "images/instructions.png"
+  import { fade } from "svelte/transition"
   import { goto } from "@sapper/app"
   function rate() {
     goto("/rate")
@@ -35,6 +36,9 @@
 
 <div class="container">
   <h1>Get ready to <br />rate 40 movies</h1>
-  <img src={instructions} alt="swipe left for rotten, swipe right for fresh" />
+  <img
+    in:fade={{ delay: 150, duration: 550 }}
+    src={instructions}
+    alt="swipe left for rotten, swipe right for fresh" />
   <button on:click={rate} class="button">Start</button>
 </div>

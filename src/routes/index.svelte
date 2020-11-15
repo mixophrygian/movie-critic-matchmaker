@@ -1,7 +1,7 @@
 <script>
   import ratedMovies from "images/rated-movies.png"
   import { goto } from "@sapper/app"
-
+  import { fade } from "svelte/transition"
   function rate() {
     goto("/instructions")
   }
