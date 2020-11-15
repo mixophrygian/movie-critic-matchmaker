@@ -42,9 +42,20 @@
   onDestroy(unsubscribe)
 
   let board
+  let carousel
   onMount(() => {
-    let carousel = new Carousel(board)
+    carousel = new Carousel(board)
   })
+
+  function skipCurrentMovie() {
+    const board = document.querySelector("#board")
+    board.removeChild(board.lastChild)
+    if (!board.firstChild) {
+      completedChoices.update(() => true)
+    } else {
+      carousel.handle()
+    }
+  }
 </script>
 
 <style>
@@ -131,5 +142,5 @@
 
 {#if !$completedChoices}
   <div in:fade={{ delay: 150, duration: 550 }} bind:this={board} id="board" />
-  <button class="skip">Skip</button>
+  <button on:click={skipCurrentMovie} class="skip">Skip</button>
 {/if}
