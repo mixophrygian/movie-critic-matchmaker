@@ -24,7 +24,7 @@ export class Carousel {
 
     handle() {
         // list all cards
-        this.cards = this.board.querySelectorAll(".card")
+        this.cards = this.board.querySelectorAll(".frame")
 
         // get top card
         this.topCard = this.cards[this.cards.length - 1]
@@ -212,17 +212,17 @@ export class Carousel {
     push(movie) {
         //create a wrapper component to append a MovieCard component to
         let card = document.createElement("div")
-        card.classList.add("card")
+        card.classList.add("frame")
 
         // add it to the DOM so MovieCard can find it
         this.board.insertBefore(card, this.board.firstChild)
-        const movieCard = new MovieCard({ target: document.querySelector(".card"), props: { title: movie.title } })
+        const movieCard = new MovieCard({ target: document.querySelector(".frame"), props: { title: movie.title } })
 
         //remove the wrapper
         this.board.removeChild(this.board.firstChild)
 
         //add poster image to MovieCard
-        card.firstChild.style.backgroundImage =
+        card.firstChild.firstChild.style.backgroundImage =
             "url('" + movie.poster + "')"
 
         //and add the MovieCard child by itself

@@ -11,8 +11,10 @@
   }
 </style>
 
-<div class="card">
-  <!-- Movie title should never be apparent but we give it some visibility
+<div class="frame">
+  <div class="card">
+    <!-- Movie title should never be apparent but we give it some visibility
   in case the movie image doesn't load. -->
-  <div alt={title} class="movieTitle">{title}</div>
+    <div alt={title} class="movieTitle">{title}</div>
+  </div>
 </div>

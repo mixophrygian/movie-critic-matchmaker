@@ -69,17 +69,23 @@
     background-color: transparent;
   }
 
-  :global(.card) {
+  :global(.frame) {
     width: 300px;
     height: 444px;
     position: absolute;
     top: 43%;
     left: 50%;
-    border-radius: 1%;
+    border-radius: 3%;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-    background-color: white;
+    background-color: transparent;
     color: black;
+    border: 12px solid white;
     transform: translateX(-50%) translateY(-50%);
+  }
+
+  :global(.card) {
+    width: 100%;
+    height: 100%;
   }
 
   .resultsPage {
