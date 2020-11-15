@@ -27,9 +27,10 @@
 
 <div class="container">
   <h1>Get ready to <br />rate 40 movies</h1>
-  <img
-    in:fade={{ delay: 150, duration: 550 }}
-    src={instructions}
-    alt="swipe left for rotten, swipe right for fresh" />
-  <button on:click={rate} class="button">Start</button>
+  <div class="container" in:fade={{ delay: 150, duration: 550 }}>
+    <img
+      src={instructions}
+      alt="swipe left for rotten, swipe right for fresh" />
+    <button on:click={rate} class="button">Start</button>
+  </div>
 </div>

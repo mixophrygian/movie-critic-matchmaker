@@ -60,6 +60,7 @@
 
   function skipCurrentMovie() {
     const board = document.querySelector("#board")
+    console.log("skipped", board.lastChild.firstChild.firstChild.textContent)
     board.removeChild(board.lastChild)
     if (!board.firstChild) {
       completedChoices.update(() => true)
