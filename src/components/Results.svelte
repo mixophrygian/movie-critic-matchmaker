@@ -1,6 +1,8 @@
 <script>
   import fresh from "images/fresh.png"
   import rotten from "images/rotten.png"
+  import { goto } from "@sapper/app"
+
   export let agreed
   export let disagreed
 
@@ -8,7 +10,7 @@
   const disagreedNames = disagreed.map((name) => name[0]).join("\n")
 
   function reload() {
-    location.reload()
+    goto("/instructions")
   }
 
   let expanded
@@ -106,7 +108,7 @@
       font-size: smaller;
     }
 
-    .button {
+    button {
       margin-top: 0;
     }
 

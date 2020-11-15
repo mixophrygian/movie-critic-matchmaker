@@ -21,6 +21,7 @@
 
   img {
     width: 85%;
+    min-height: 281px;
   }
 </style>
 
