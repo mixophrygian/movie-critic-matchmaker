@@ -1,6 +1,8 @@
 <script>
   import ratedMovies from "images/rated-movies.png"
   import { goto } from "@sapper/app"
+  import { fade } from "svelte/transition"
+
   function rate() {
     goto("/instructions")
   }
@@ -72,7 +74,7 @@
 <svelte:head>
   <title>Movie Critic Matchmaker</title>
 </svelte:head>
-<div class="container">
+<div transition:fade={{ delay: 50, duration: 450 }} class="container">
   <div class="content">
     <h1>Who's your movie critic match?</h1>
 

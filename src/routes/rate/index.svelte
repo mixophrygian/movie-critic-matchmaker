@@ -174,6 +174,6 @@
 {/if}
 
 {#if !$completedChoices}
-  <div in:fade={{ delay: 250, duration: 550 }} bind:this={board} id="board" />
+  <div in:fade={{ delay: 350, duration: 650 }} bind:this={board} id="board" />
   <button on:click={skipCurrentMovie} class="skip">Skip</button>
 {/if}
