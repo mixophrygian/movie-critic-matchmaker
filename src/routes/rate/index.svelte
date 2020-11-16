@@ -73,7 +73,7 @@
 <style>
   #board {
     width: 100vw;
-    height: 94vh;
+    height: 74vh;
     position: absolute;
     top: 50px;
     overflow: hidden;
@@ -104,7 +104,7 @@
   .skip {
     position: absolute;
     left: 40%;
-    bottom: 12%;
+    bottom: 3%;
     color: #c8c8c8;
     background-color: #261a1f;
     border: 3px solid #261a1f;
@@ -150,6 +150,9 @@
 
   /* iphone 8 plus */
   @media (min-height: 735px) {
+    #board {
+      height: 85vh;
+    }
     .skip {
       bottom: 12%;
     }
