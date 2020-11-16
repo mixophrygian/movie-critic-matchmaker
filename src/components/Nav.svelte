@@ -1,6 +1,5 @@
 <script>
   import Hamburger from "./Hamburger.svelte"
-  export let segment
   export let sidebar = false
 </script>
 
