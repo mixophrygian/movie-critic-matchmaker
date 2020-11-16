@@ -189,7 +189,6 @@ export class Carousel {
                 setTimeout(() => {
                     // remove swiped card
                     this.board.removeChild(this.topCard)
-                    console.log('swiped', this.topCard.firstChild.firstChild.textContent)
                     if (!this.board.firstChild) {
                         // calculate results
                         completedChoices.update(() => true)
@@ -225,6 +224,7 @@ export class Carousel {
         //add poster image to MovieCard
         card.firstChild.firstChild.style.backgroundImage =
             "url('" + movie.poster + "')"
+
 
         //and add the MovieCard child by itself
         this.board.insertBefore(card.firstChild, this.board.firstChild)

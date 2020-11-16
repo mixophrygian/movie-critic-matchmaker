@@ -5,7 +5,6 @@
     completedChoices,
     userChoices,
   } from "../../stores.js"
-
   export async function preload() {
     const response = await this.fetch("mostReviewedMoviesWithPosters.json")
     const movies = await response.json()
@@ -29,15 +28,16 @@
     findCriticsWhoDisagree,
   } from "../../_helpers/matchCriticsToUserInput"
 
-  export let movies
-  export let critics
   export let completed
   let user_choices
   let agreed
   let disagreed
+  export let movies
+  export let critics
 
   $criticObjects = critics
   $allMovies = movies
+
   $completedChoices = completed
 
   const unsubscribe = userChoices.subscribe((value) => {
@@ -82,15 +82,15 @@
 
   :global(.frame) {
     width: 300px;
-    height: 444px;
+    height: 430px;
     position: absolute;
     top: 43%;
     left: 50%;
     border-radius: 3%;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-    background-color: transparent;
     background-size: 100%;
     color: #110309;
+    background-color: white;
     border: 12px solid white;
     transform: translateX(-50%) translateY(-50%);
   }

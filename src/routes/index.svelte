@@ -24,6 +24,7 @@
   img {
     width: 100%;
     min-width: 475px;
+    min-height: 267px;
     margin: 0 0 1em 0;
   }
 
