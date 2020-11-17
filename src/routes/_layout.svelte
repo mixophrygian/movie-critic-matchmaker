@@ -36,7 +36,6 @@
   }
   :global(body) {
     background-color: #110309;
-    height: 95vh;
     font-family: Inter, Helvetica, Arial, sans-serif;
     padding: 0;
   }
@@ -66,7 +65,6 @@
     color: white;
     margin: 0 auto;
     box-sizing: border-box;
-    height: 100%;
     overflow-x: hidden;
   }
 

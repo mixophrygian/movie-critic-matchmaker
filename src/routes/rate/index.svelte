@@ -76,6 +76,9 @@
 </script>
 
 <style>
+  .container {
+    height: 78vh;
+  }
   #board {
     width: 100vw;
     height: 74vh;
@@ -86,8 +89,8 @@
   }
 
   :global(.frame) {
-    width: 250px;
-    height: 358px;
+    width: 300px;
+    height: 430px;
     position: absolute;
     top: 52%;
     left: 50%;
@@ -134,7 +137,7 @@
     -webkit-user-select: text;
   }
 
-  @media (max-width: 321px) {
+  @media (max-width: 322px) {
     #board {
       height: 84vh;
     }
@@ -149,42 +152,51 @@
     }
 
     .skip {
-      bottom: 14%;
+      bottom: 4%;
       left: 37%;
     }
   }
 
   /* iphone 6, 7, 8 */
-  @media (max-height: 664px) {
+  @media (min-height: 666px) and (max-height: 734px) {
+    .container {
+      height: 82vh;
+    }
     .skip {
-      bottom: 12%;
+      bottom: 1%;
+    }
+    :global(.frame) {
+      width: 300px;
+      height: 430px;
+      top: 55%;
     }
   }
 
   /* iphone 8 plus */
-  @media (max-height: 735px) {
+  @media (min-height: 735px) and (max-height: 810px) {
+    .container {
+      height: 82vh;
+    }
     :global(.frame) {
-      width: 300px;
-      height: 430px;
-      top: 47%;
+      top: 46%;
     }
     #board {
       height: 85vh;
     }
     .skip {
-      bottom: 9%;
+      bottom: 5%;
     }
   }
 
   /* iphone X */
-  @media (max-height: 811px) {
+  @media (min-height: 810px) {
     :global(.frame) {
       width: 300px;
       height: 430px;
-      top: 44%;
+      top: 46%;
     }
     .skip {
-      bottom: 13%;
+      bottom: 12%;
     }
   }
 </style>
@@ -205,7 +217,9 @@
 {/if}
 
 {#if !$completedChoices}
-  <ProgressBar />
-  <div in:fade={{ delay: 350, duration: 650 }} bind:this={board} id="board" />
-  <button on:click={skipCurrentMovie} class="skip">Skip</button>
+  <div class="container">
+    <ProgressBar />
+    <div in:fade={{ delay: 350, duration: 650 }} bind:this={board} id="board" />
+    <button on:click={skipCurrentMovie} class="skip">Skip</button>
+  </div>
 {/if}

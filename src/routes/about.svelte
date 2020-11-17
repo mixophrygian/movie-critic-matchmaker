@@ -4,7 +4,7 @@
 
 <style>
   img {
-    width: 96px;
+    width: 86px;
     margin-bottom: 1rem;
   }
   .container {

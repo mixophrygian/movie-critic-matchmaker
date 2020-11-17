@@ -2,9 +2,13 @@
   import instructions from "images/instructions.png"
   import { fade } from "svelte/transition"
   import { goto } from "@sapper/app"
+  import { userChoices, progressBars } from "../../stores.js"
+
   function rate() {
     goto("/rate")
   }
+  userChoices.set([])
+  progressBars.set({ fresh: 0, rotten: 0 })
 </script>
 
 <style>
