@@ -86,10 +86,10 @@
   }
 
   :global(.frame) {
-    width: 300px;
-    height: 430px;
+    width: 250px;
+    height: 358px;
     position: absolute;
-    top: 43%;
+    top: 52%;
     left: 50%;
     border-radius: 3%;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
@@ -135,38 +135,56 @@
   }
 
   @media (max-width: 321px) {
+    #board {
+      height: 84vh;
+    }
     :global(.frame) {
-      width: 250px;
-      height: 369px;
+      width: 200px;
+      height: 286px;
+      top: 45%;
+    }
+
+    :global(body) {
+      height: 100vh;
     }
 
     .skip {
-      bottom: 7%;
+      bottom: 14%;
       left: 37%;
     }
   }
 
   /* iphone 6, 7, 8 */
-  @media (min-height: 666px) {
-    .skip {
-      bottom: 7%;
-    }
-  }
-
-  /* iphone 8 plus */
-  @media (min-height: 735px) {
-    #board {
-      height: 85vh;
-    }
+  @media (max-height: 664px) {
     .skip {
       bottom: 12%;
     }
   }
 
-  /* iphone X */
-  @media (min-height: 812px) {
+  /* iphone 8 plus */
+  @media (max-height: 735px) {
+    :global(.frame) {
+      width: 300px;
+      height: 430px;
+      top: 47%;
+    }
+    #board {
+      height: 85vh;
+    }
     .skip {
-      bottom: 16%;
+      bottom: 9%;
+    }
+  }
+
+  /* iphone X */
+  @media (max-height: 811px) {
+    :global(.frame) {
+      width: 300px;
+      height: 430px;
+      top: 44%;
+    }
+    .skip {
+      bottom: 13%;
     }
   }
 </style>

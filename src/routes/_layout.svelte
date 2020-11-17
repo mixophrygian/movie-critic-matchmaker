@@ -36,7 +36,7 @@
   }
   :global(body) {
     background-color: #110309;
-    height: 83vh;
+    height: 95vh;
     font-family: Inter, Helvetica, Arial, sans-serif;
     padding: 0;
   }
