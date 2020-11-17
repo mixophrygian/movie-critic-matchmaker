@@ -32,6 +32,9 @@
     max-width: 50px;
   }
 
+  h2 {
+    font-family: "Inter-SemiBold";
+  }
   .iconAndText {
     display: flex;
   }

@@ -1,10 +1,11 @@
 <script>
-  import glasses from "images/3DGlasses.png"
+  import fresh from "images/fresh.png"
 </script>
 
 <style>
   img {
     width: 96px;
+    margin-bottom: 1rem;
   }
   .container {
     display: flex;
@@ -16,6 +17,16 @@
   p {
     margin-bottom: 1.5rem;
   }
+
+  h2 {
+    font-family: "Inter-SemiBold";
+  }
+
+  @media (max-width: 320px) {
+    img {
+      width: 70px;
+    }
+  }
 </style>
 
 <svelte:head>
@@ -23,20 +34,20 @@
 </svelte:head>
 
 <div class="container">
-  <img alt="3D glasses" src={glasses} />
+  <img alt="fresh tomato" src={fresh} />
   <div>
     <h2>How does it work?</h2>
     <p>
-      We selected about a hundred polarizing movies made in the last five years.
-      Every visit you'll see fourty random movies from this list -- of the
-      movies you rated, we'll find the top critics who you agree with the most.
-      We'll also show you the critics you disagree with the most.
+      We selected about a hundred polarizing movies made recently-ish. Every
+      visit you'll see fourty random movies from this list -- of the movies you
+      rated, we'll find the top critics who you agree with the most. We'll also
+      show you the critics you disagree with the most.
     </p>
 
     <h2>Why are the results different each time?</h2>
     <p>
-      Not all critics have reviewed the movies you rate, but you'll be matched
-      with ones who have.
+      Every visit you'll rate a different set of movies. Not all critics have
+      reviewed the movies you rate, but you'll be matched with ones who have.
     </p>
 
     <h2>Why isn't my favorite movie on this list?</h2>
@@ -57,6 +68,6 @@
       inspired by her cinephile husband, so I guess you can blame them both.
     </p>
     <h2>Speak nerdy to me</h2>
-    <p>This site was built using Sapper and Svelte!</p>
+    <p>This site was built using Svelte!</p>
   </div>
 </div>
