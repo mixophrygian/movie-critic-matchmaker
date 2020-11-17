@@ -23,6 +23,7 @@
   import { Carousel } from "../../_helpers/carousel.ts"
   import Results from "../../components/Results.svelte"
   import NoMatches from "../../components/NoMatches.svelte"
+  import ProgressBar from "../../components/ProgressBar.svelte"
   import {
     findCriticsWhoAgree,
     findCriticsWhoDisagree,
@@ -182,6 +183,7 @@
 {/if}
 
 {#if !$completedChoices}
+  <ProgressBar />
   <div in:fade={{ delay: 350, duration: 650 }} bind:this={board} id="board" />
   <button on:click={skipCurrentMovie} class="skip">Skip</button>
 {/if}
