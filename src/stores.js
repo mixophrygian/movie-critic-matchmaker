@@ -13,6 +13,7 @@ export const criticObjects = writable([])
 
 export const userChoices = writable([])
 
+export const progressBars = writable({fresh: 0, rotten: 0})
 
 // {movies: [{title: Evil Dead, broadRating: rotten}]}
 export const completedChoices = writable(false)

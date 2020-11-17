@@ -4,7 +4,10 @@
     criticObjects,
     completedChoices,
     userChoices,
+    progressBars,
   } from "../../stores.js"
+
+  import { ONE_MOVIE_PERCENTAGE } from "../../_helpers/utils.ts"
   export async function preload() {
     const response = await this.fetch("mostReviewedMoviesWithPosters.json")
     const movies = await response.json()
@@ -30,7 +33,6 @@
   } from "../../_helpers/matchCriticsToUserInput"
 
   export let completed
-  let user_choices
   let agreed
   let disagreed
   export let movies
@@ -40,11 +42,6 @@
   $allMovies = movies
 
   $completedChoices = completed
-
-  const unsubscribe = userChoices.subscribe((value) => {
-    user_choices = value
-  })
-  onDestroy(unsubscribe)
 
   let board
   let carousel
@@ -56,13 +53,20 @@
     if ($completedChoices) {
       agreed = findCriticsWhoAgree($criticObjects)($userChoices)
       disagreed = findCriticsWhoDisagree($criticObjects)($userChoices)
+      userChoices.set([])
+      progressBars.set({ fresh: 0, rotten: 0 })
     }
   }
 
   function skipCurrentMovie() {
     const board = document.querySelector("#board")
-    console.log("skipped", board.lastChild.firstChild.firstChild.textContent)
     board.removeChild(board.lastChild)
+    progressBars.update((bars) => {
+      return {
+        fresh: bars.fresh + ONE_MOVIE_PERCENTAGE / 2,
+        rotten: bars.rotten + ONE_MOVIE_PERCENTAGE / 2,
+      }
+    })
     if (!board.firstChild) {
       completedChoices.update(() => true)
     } else {

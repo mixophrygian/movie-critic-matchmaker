@@ -1,35 +1,29 @@
 <script>
-  import fresh from "images/fresh.png"
-  import rotten from "images/rotten.png"
+  import freshIcon from "images/fresh.png"
+  import rottenIcon from "images/rotten.png"
+  import { onDestroy, onMount } from "svelte"
+  import { progressBars } from "../stores.js"
 
-  import { onMount } from "svelte"
-  export let freshPercent
-  export let rottenPercent
+  let freshBar
+  let rottenBar
+  let progress_bars
 
-  function bar() {
-    let fresh = document.getElementById("fresh")
-    let rotten = document.getElementById("rotten")
+  const unsubscribe = progressBars.subscribe((value) => {
+    progress_bars = value
+  })
 
-    // For 40 movies, one rating adds 2.5%
-    return {
-      fresh: fresh,
-      rotten: rotten,
-      setFresh: function (percent) {
-        this.fresh.style.width = percent + "%"
-      },
-      setRotten: function (percent) {
-        this.rotten.style.width = percent + "%"
-      },
-    }
-  }
-
-  let progressBar
+  onDestroy(unsubscribe)
 
   onMount(() => {
-    progressBar = bar()
-    // progressBar.setFresh(30)
-    // progressBar.setRotten(30)
+    freshBar = document.getElementById("fresh")
+    rottenBar = document.getElementById("rotten")
   })
+  $: {
+    if (freshBar) {
+      freshBar.style.width = $progressBars.fresh + "%"
+      rottenBar.style.width = $progressBars.rotten + "%"
+    }
+  }
 </script>
 
 <style>
@@ -85,10 +79,10 @@
 </style>
 
 <div class="container">
-  <img src={rotten} alt="rotten" />
+  <img src={rottenIcon} alt="rotten" />
   <div class="progress">
     <div id="rotten" class="bar" />
     <div id="fresh" class="bar" />
   </div>
-  <img class="tomato" src={fresh} alt="fresh" />
+  <img class="tomato" src={freshIcon} alt="fresh" />
 </div>
