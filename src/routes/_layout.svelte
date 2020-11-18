@@ -77,7 +77,7 @@
 </style>
 
 <svelte:window bind:innerWidth={width} />
-{#if width > 415}
+{#if width > 440}
   <UseAPhone />
 {:else}
   <main>
