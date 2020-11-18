@@ -1,5 +1,6 @@
 <script>
   import ratedMovies from "images/rated-movies.png"
+  import social from "images/social.png"
   import { goto } from "@sapper/app"
   import { fade } from "svelte/transition"
 
