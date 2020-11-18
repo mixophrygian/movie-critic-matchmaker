@@ -172,23 +172,7 @@
     }
   }
 
-  /* iphone 8 plus */
-  @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (-webkit-device-pixel-ratio: 3) {
-    .container {
-      height: 82vh;
-    }
-    :global(.frame) {
-      top: 48%;
-    }
-    #board {
-      height: 85vh;
-    }
-    .skip {
-      bottom: 3%;
-    }
-  }
-
-  /* iphone X and iphone 11 pro */
+  /* iphone X and iphone 8 plus and iphone 11 pro */
   @media only screen and (min-device-width: 375px) and (max-device-height: 812px) {
     :global(.frame) {
       width: 275px;
@@ -197,6 +181,23 @@
     }
     .skip {
       bottom: 8%;
+    }
+  }
+
+  /* iphone 8 plus */
+
+  @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (-webkit-device-pixel-ratio: 3) {
+    .container {
+      height: 82vh;
+    }
+    :global(.frame) {
+      top: 46%;
+    }
+    #board {
+      height: 85vh;
+    }
+    .skip {
+      bottom: 5%;
     }
   }
 
