@@ -158,52 +158,67 @@
   }
 
   /* iphone 6, 7, 8 */
-  @media (min-height: 666px) and (max-height: 734px) {
+  @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
     .container {
       height: 82vh;
     }
     .skip {
-      bottom: 11%;
+      bottom: 5%;
     }
     :global(.frame) {
-      width: 300px;
-      height: 430px;
-      top: 50%;
+      width: 250px;
+      height: 358px;
+      top: 52%;
     }
   }
 
   /* iphone 8 plus */
-  @media (min-height: 735px) and (max-height: 810px) {
+  @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (-webkit-device-pixel-ratio: 3) {
     .container {
       height: 82vh;
     }
     :global(.frame) {
-      top: 46%;
+      top: 48%;
     }
     #board {
       height: 85vh;
     }
     .skip {
-      bottom: 5%;
+      bottom: 3%;
     }
   }
 
-  /* iphone X */
-  @media (min-height: 810px) {
+  /* iphone X and iphone 11 pro */
+  @media only screen and (min-device-width: 375px) and (max-device-height: 812px) {
     :global(.frame) {
-      width: 300px;
-      height: 430px;
-      top: 46%;
+      width: 275px;
+      height: 394px;
+      top: 48%;
     }
     .skip {
-      bottom: 12%;
+      bottom: 8%;
     }
   }
 
   /* iphone 11 */
-  @media (min-height: 896px) {
+  @media only screen and (min-device-width: 414px) and (min-device-height: 896px) {
+    :global(.frame) {
+      top: 47%;
+    }
     .skip {
-      bottom: 19%;
+      bottom: 14%;
+    }
+  }
+
+  /* iphone 12 max */
+  @media (min-width: 428px) {
+    :global(.frame) {
+      width: 300px;
+      height: 430px;
+      top: 40%;
+    }
+    .skip {
+      bottom: 16%;
     }
   }
 </style>

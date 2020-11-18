@@ -38,6 +38,7 @@
     background-color: #110309;
     font-family: Inter, Helvetica, Arial, sans-serif;
     padding: 0;
+    touch-action: manipulation;
   }
 
   :global(.button) {
@@ -66,13 +67,6 @@
     margin: 0 auto;
     box-sizing: border-box;
     overflow-x: hidden;
-  }
-
-  /* iphone 8 plus */
-  @media (min-height: 735px) {
-    :global(body) {
-      height: 94vh;
-    }
   }
 </style>
 

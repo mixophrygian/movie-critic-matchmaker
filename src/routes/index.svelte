@@ -18,19 +18,18 @@
   h1 {
     font-size: 2em;
     margin-bottom: 0.5em;
-    letter-spacing: 1px;
   }
 
   img {
-    width: 100%;
-    min-width: 475px;
-    min-height: 267px;
+    width: 90%;
+    /* min-width: 475px; */
+    min-height: 257px;
     margin: 0 0 1em 0;
   }
 
   p {
-    margin: 1em auto;
-    font-size: 1rem;
+    margin: 0 auto;
+    font-size: 1.5rem;
   }
 
   .content {
@@ -67,6 +66,19 @@
   @media (min-width: 480px) {
     h1 {
       font-size: 4em;
+    }
+  }
+
+  /* iphone 6, 7, 8 */
+  @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+    .container {
+      padding: 1.25rem;
+    }
+    h1 {
+      margin-bottom: 0;
+    }
+    p {
+      margin: 0;
     }
   }
 </style>
