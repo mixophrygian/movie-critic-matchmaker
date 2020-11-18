@@ -1,5 +1,4 @@
-add landing image placeholder while main one loads
+add loading spinner to wait for background images .onload
+on rating page?
 
-fix page height on about page? weird double scroll
-
-results page
+new design - results page
