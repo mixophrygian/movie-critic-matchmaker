@@ -22,7 +22,6 @@
 
   img {
     width: 90%;
-    /* min-width: 475px; */
     min-height: 257px;
     margin: 0 0 1em 0;
   }
