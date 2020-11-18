@@ -4,7 +4,7 @@
 
 <style>
   img {
-    width: 86px;
+    width: 70px;
     margin-bottom: 1rem;
   }
   .container {
@@ -24,7 +24,7 @@
 
   @media (max-width: 320px) {
     img {
-      width: 70px;
+      width: 50px;
     }
   }
 </style>

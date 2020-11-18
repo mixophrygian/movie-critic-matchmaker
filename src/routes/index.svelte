@@ -57,10 +57,6 @@
     .container {
       padding: 1rem;
     }
-
-    img {
-      min-width: 425px;
-    }
   }
 
   @media (min-width: 480px) {
