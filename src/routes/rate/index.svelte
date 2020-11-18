@@ -163,12 +163,12 @@
       height: 82vh;
     }
     .skip {
-      bottom: 1%;
+      bottom: 11%;
     }
     :global(.frame) {
       width: 300px;
       height: 430px;
-      top: 55%;
+      top: 50%;
     }
   }
 
@@ -197,6 +197,13 @@
     }
     .skip {
       bottom: 12%;
+    }
+  }
+
+  /* iphone 11 */
+  @media (min-height: 896px) {
+    .skip {
+      bottom: 19%;
     }
   }
 </style>
