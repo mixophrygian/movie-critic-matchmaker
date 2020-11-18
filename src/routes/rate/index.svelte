@@ -157,6 +157,19 @@
     }
   }
 
+  /* Moto G4 */
+  @media (max-width: 360px) {
+    .container {
+      height: 90vh;
+    }
+    #board {
+      height: 86vh;
+    }
+    :global(.frame) {
+      top: 50%;
+    }
+  }
+
   /* iphone X and iphone 11 pro */
   @media only screen and (min-device-width: 375px) and (max-device-height: 812px) {
     :global(.frame) {
