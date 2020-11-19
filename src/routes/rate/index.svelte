@@ -4,6 +4,7 @@
     criticObjects,
     completedChoices,
     userChoices,
+    userSkipped,
     progressBars,
   } from "../../stores.js"
 
@@ -55,11 +56,16 @@
       disagreed = findCriticsWhoDisagree($criticObjects)($userChoices)
       userChoices.set([])
       progressBars.set({ fresh: 0, rotten: 0 })
+      console.log($userSkipped)
     }
   }
 
   function skipCurrentMovie() {
     const board = document.querySelector("#board")
+    userSkipped.update((skipped) => [
+      ...skipped,
+      { title: board.lastChild.firstChild.firstChild.textContent },
+    ])
     board.removeChild(board.lastChild)
     progressBars.update((bars) => {
       return {

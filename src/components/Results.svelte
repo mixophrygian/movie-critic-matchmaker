@@ -1,6 +1,7 @@
 <script>
   import fresh from "images/fresh.png"
   import rotten from "images/rotten.png"
+  import arrow from "images/arrow.svg"
   import { goto } from "@sapper/app"
 
   export let agreed
@@ -13,10 +14,15 @@
     goto("/instructions")
   }
 
-  let expanded
+  let expanded = false
 
-  function toggleCollapse(e, name) {
-    expanded = name
+  function toggleCollapse(name, category) {
+    console.log("expanded", expanded)
+    if (expanded === `${name}${category}`) {
+      expanded = false
+    } else {
+      expanded = `${name}${category}`
+    }
   }
 </script>
 
@@ -32,51 +38,61 @@
     max-width: 50px;
   }
 
-  h2 {
-    font-family: "Inter-SemiBold";
-  }
-  .iconAndText {
+  .arrowContainer {
     display: flex;
+    justify-content: flex-end;
+    align-self: start;
+    flex: 1;
+    transition: all 0.25s ease;
   }
 
-  .nameContainer {
+  .arrowContainer.rotated {
+    transform: rotateZ(180deg);
+  }
+
+  .arrow {
+    margin-right: 0;
+    width: 40px;
+  }
+
+  .resultsContainer {
     display: flex;
     flex-direction: column;
   }
 
+  .singleResultContainer {
+    display: flex;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .tapContainer {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+  }
   .agreedContainer {
     margin-bottom: 3rem;
   }
 
-  button {
-    background: white;
-    border: none;
-    border-radius: 5px;
-    padding: 0.5rem 2rem;
-    font-size: 18px;
+  .button {
     align-self: center;
-    margin-top: 2rem;
   }
 
   h2 {
-    margin-bottom: 2rem;
+    font-family: "Inter-SemiBold";
     font-weight: bold;
   }
 
   .name {
     line-height: 1.25;
     font-size: 1rem;
-    padding-bottom: 0.5rem;
+    font-family: "Inter-Semibold";
   }
 
   .stats {
-    font-size: small;
-    padding-left: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .underline {
-    text-decoration: underline;
+    color: gray;
+    margin-bottom: 0.5rem;
   }
 
   .collapse {
@@ -89,7 +105,6 @@
 
   .collapse.show {
     max-height: 99em;
-    margin-top: 0.5rem;
     transition: max-height 0.5s ease-in-out;
   }
 
@@ -124,55 +139,72 @@
 <div class="container">
   <div class="agreedContainer">
     <h2>Your favorite critics</h2>
-    <div class="iconAndText">
-      <img class="fresh" alt="fresh" src={fresh} />
-      <div class="nameContainer">
-        {#each agreed as name, index}
+    <div class="resultsContainer">
+      {#each agreed as name, index}
+        <div class="singleResultContainer">
+          <img class="fresh" alt="fresh" src={fresh} />
           <div
             role="button"
-            on:click={(e) => toggleCollapse(e, name[0])}
+            on:click={(e) => toggleCollapse(name[0], 'agreed')}
             class="tapContainer">
-            <div class="name">{name[0]}</div>
-            <div class="stats">
-              <span class="underline">Agreed on
-                {name[1].moviesAgreed.length}
-                movie{name[1].moviesAgreed.length == 1 ? '' : 's'}
-              </span>
-              <div class={expanded === name[0] ? 'show collapse' : 'collapse'}>
-                {name[1].moviesAgreed.map((movie) => movie.title).join(', ')}
+            <div>
+              <div class="name">{name[0]}</div>
+              <div class="stats">
+                <span class="agreedOn">Agreed on
+                  {name[1].moviesAgreed.length}
+                  movie{name[1].moviesAgreed.length == 1 ? '' : 's'}
+                </span>
+                <div
+                  class={expanded == `${name[0]}agreed` ? 'show collapse' : 'collapse'}>
+                  {name[1].moviesAgreed.map((movie) => movie.title).join(', ')}
+                </div>
               </div>
             </div>
+            <div
+              class={expanded == `${name[0]}agreed` ? 'arrowContainer rotated' : 'arrowContainer'}>
+              <img class="arrow" alt="arrow" src={arrow} />
+            </div>
           </div>
-        {/each}
-      </div>
+        </div>
+      {/each}
     </div>
   </div>
+
   <div class="disagreedContainer">
     <h2 class="leasth2">Your least-favorite critics</h2>
-    <div class="iconAndText">
-      <img class="rotten" alt="rotten" src={rotten} />
-      <div class="nameContainer">
-        {#each disagreed as name, index}
+    <div class="resultsContainer">
+      {#each disagreed as name, index}
+        <div class="singleResultContainer">
+          <img class="rotten" alt="rotten" src={rotten} />
           <div
-            on:click={(e) => toggleCollapse(e, name[0])}
+            on:click={(e) => toggleCollapse(name[0], 'disagreed')}
             role="button"
-            lass="tapContainer">
-            <div class="name">{name[0]}</div>
-            <div class="stats">
-              <span class="underline">
-                Disagreed on
-                {name[1].moviesDisagreed.length}
-                movie{name[1].moviesDisagreed.length == 1 ? '' : 's'}
-              </span>
+            class="tapContainer">
+            <div>
+              <div class="name">{name[0]}</div>
+              <div class="stats">
+                <span class="disagreedOn">
+                  Disagreed on
+                  {name[1].moviesDisagreed.length}
+                  movie{name[1].moviesDisagreed.length == 1 ? '' : 's'}
+                </span>
 
-              <div class={expanded === name[0] ? 'show collapse' : 'collapse'}>
-                {name[1].moviesDisagreed.map((movie) => movie.title).join(', ')}
+                <div
+                  class={expanded == `${name[0]}disagreed` ? 'show collapse' : 'collapse'}>
+                  {name[1].moviesDisagreed
+                    .map((movie) => movie.title)
+                    .join(', ')}
+                </div>
               </div>
             </div>
+            <div
+              class={expanded == `${name[0]}disagreed` ? 'arrowContainer rotated' : 'arrowContainer'}>
+              <img class="arrow" alt="arrow" src={arrow} />
+            </div>
           </div>
-        {/each}
-      </div>
+        </div>
+      {/each}
     </div>
   </div>
-  <button on:click={reload}>again!</button>
+  <button class="button" on:click={reload}>again!</button>
 </div>

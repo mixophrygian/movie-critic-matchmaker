@@ -1,4 +1,4 @@
-import { userChoices, progressBars } from '../stores.js'
+import { userChoices, userSkipped, progressBars } from '../stores.js'
 export const HOW_MANY_MOVIES_TO_SHOW = 40
 export const ONE_MOVIE_PERCENTAGE = 100 / HOW_MANY_MOVIES_TO_SHOW
 const TOTAL_MOVIES = 98
@@ -6,8 +6,8 @@ const TOTAL_MOVIES = 98
 export function pickNRandomMovies(N) {
   let arr = Array.from(Array(TOTAL_MOVIES).keys()).map(i => i);
   // for testing
-  //let out = shuffle([1, 18, 23, 19])
-  let out = shuffle(arr)
+  let out = shuffle([1, 18, 23, 19])
+  //let out = shuffle(arr)
   return out.slice(0, N + 1)
 }
 
@@ -51,6 +51,7 @@ export function recordUserChoice(directionInt, title) {
       progressBars.update(percents => {
         return { fresh: percents.fresh + ONE_MOVIE_PERCENTAGE / 2, rotten: percents.rotten + ONE_MOVIE_PERCENTAGE / 2 }
       });
+      userSkipped.update(skipped => [...skipped, { title }])
       break;
     default:
   }
