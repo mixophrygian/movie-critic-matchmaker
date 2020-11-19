@@ -166,7 +166,10 @@
       height: 86vh;
     }
     :global(.frame) {
-      top: 50%;
+      top: 53%;
+    }
+    .skip {
+      bottom: 0;
     }
   }
 
