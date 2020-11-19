@@ -17,7 +17,6 @@
   let expanded = false
 
   function toggleCollapse(name, category) {
-    console.log("expanded", expanded)
     if (expanded === `${name}${category}`) {
       expanded = false
     } else {
@@ -92,6 +91,11 @@
 
   .stats {
     color: gray;
+    margin-bottom: 0.25rem;
+  }
+
+  .agreedOn,
+  .disagreedOn {
     margin-bottom: 0.5rem;
   }
 
@@ -150,10 +154,11 @@
             <div>
               <div class="name">{name[0]}</div>
               <div class="stats">
-                <span class="agreedOn">Agreed on
+                <div class="agreedOn">
+                  Agreed on
                   {name[1].moviesAgreed.length}
                   movie{name[1].moviesAgreed.length == 1 ? '' : 's'}
-                </span>
+                </div>
                 <div
                   class={expanded == `${name[0]}agreed` ? 'show collapse' : 'collapse'}>
                   {name[1].moviesAgreed.map((movie) => movie.title).join(', ')}
@@ -183,11 +188,11 @@
             <div>
               <div class="name">{name[0]}</div>
               <div class="stats">
-                <span class="disagreedOn">
+                <div class="disagreedOn">
                   Disagreed on
                   {name[1].moviesDisagreed.length}
                   movie{name[1].moviesDisagreed.length == 1 ? '' : 's'}
-                </span>
+                </div>
 
                 <div
                   class={expanded == `${name[0]}disagreed` ? 'show collapse' : 'collapse'}>
