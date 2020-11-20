@@ -11,6 +11,15 @@ export function pickNRandomMovies(N) {
   return out.slice(0, N + 1)
 }
 
+export function getNRandomExcludingPrevious(N, previous) {
+  let arr = Array.from(Array(TOTAL_MOVIES).keys()).map(i => i);
+  const newArr = arr.filter(item => {
+    return !previous.includes(item)
+  })
+  let out = shuffle(newArr)
+  return out.slice(0, N + 1)
+}
+
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 

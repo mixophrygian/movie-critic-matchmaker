@@ -1,13 +1,25 @@
 import { writable, derived } from 'svelte/store';
-import { pickNRandomMovies, HOW_MANY_MOVIES_TO_SHOW } from './_helpers/utils.ts'
+import { pickNRandomMovies, HOW_MANY_MOVIES_TO_SHOW, getNRandomExcludingPrevious } from './_helpers/utils.ts'
 
 export const allMovies = writable([])
 
-export const randomMovies = derived(allMovies, ($allMovies, set) => {
-    const randomIndexes = pickNRandomMovies(HOW_MANY_MOVIES_TO_SHOW)
+export const secondTimeThrough = writable(false)
+
+export const randomMovies = derived([allMovies, secondTimeThrough], ([$allMovies, $secondTimeThrough], set) => {
+    let randomIndexes
+    if(!$secondTimeThrough) {
+        console.log('first time through')
+        randomIndexes = pickNRandomMovies(HOW_MANY_MOVIES_TO_SHOW)
+        previousRandomIndexes = randomIndexes
+    } else {
+        console.log('second time through')
+        randomIndexes = getNRandomExcludingPrevious(HOW_MANY_MOVIES_TO_SHOW, previousRandomIndexes)
+    }
     const randomMoviesFromIndexes = randomIndexes.map(index => $allMovies[index])
     set(randomMoviesFromIndexes)
 })
+
+let previousRandomIndexes = [] 
 
 export const criticObjects = writable([])
 

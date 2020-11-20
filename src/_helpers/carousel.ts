@@ -3,7 +3,7 @@
 import { recordUserChoice } from '../_helpers/utils.ts'
 import MovieCard from "../components/MovieCard.svelte"
 
-import { completedChoices, randomMovies } from '../stores.js'
+import { completedChoices, randomMovies, secondTimeThrough } from '../stores.js'
 
 let randomMoviesValue
 
@@ -13,7 +13,6 @@ const unsubscribe = randomMovies.subscribe(value => {
 export class Carousel {
     constructor(element) {
         this.board = element
-
         randomMoviesValue.forEach(async movie => {
             this.push(movie)
         })

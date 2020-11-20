@@ -6,6 +6,7 @@
     userChoices,
     userSkipped,
     progressBars,
+    secondTimeThrough,
   } from "../../stores.js"
 
   import { ONE_MOVIE_PERCENTAGE } from "../../_helpers/utils.ts"
@@ -57,7 +58,6 @@
         $userChoices,
         $userSkipped
       )
-      userChoices.set([])
       progressBars.set({ fresh: 0, rotten: 0 })
     }
   }

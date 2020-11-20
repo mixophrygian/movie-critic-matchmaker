@@ -4,7 +4,7 @@
   import twitter from "images/twitter.svg"
   import arrow from "images/arrow.svg"
   import { goto } from "@sapper/app"
-  import { randomMovies } from "../stores.js"
+  import { randomMovies, secondTimeThrough } from "../stores.js"
   import MiniMovieCard from "../components/MiniMovieCard.svelte"
 
   export let agreed
@@ -12,9 +12,9 @@
 
   const agreedNames = agreed.map((name) => name[0]).join("\n")
   const disagreedNames = disagreed.map((name) => name[0]).join("\n")
-  console.log(agreed[0])
 
-  function reload() {
+  function rateAgainHandler() {
+    secondTimeThrough.update((currentValue) => !currentValue)
     goto("/instructions")
   }
 
@@ -31,6 +31,7 @@
     const found = $randomMovies.find((movie) => movie.title === title)
     return found.poster
   }
+
   let favorite = agreed[0][0]
   let dynamicText = `Turns out my favorite top movie critic is ${favorite}. %0a%0aWho's yours?%0a%0a`
   let dynamicHref = `https://twitter.com/share?url=moviecriticmatchmaker.com&text=${dynamicText}`
@@ -295,7 +296,7 @@
     </div>
   </div>
   <div class="buttonContainer">
-    <button class="button" on:click={reload}>Again</button>
+    <button class="button" on:click={rateAgainHandler}>Rate different movies</button>
     <button class="button"><a target="_blank" href={dynamicHref}><img
           alt="share on twitter"
           class="twitterLogo"
