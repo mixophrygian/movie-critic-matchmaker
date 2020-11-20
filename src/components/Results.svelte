@@ -1,6 +1,7 @@
 <script>
   import fresh from "images/fresh.png"
   import rotten from "images/rotten.png"
+  import twitter from "images/twitter.svg"
   import arrow from "images/arrow.svg"
   import { goto } from "@sapper/app"
   import { randomMovies } from "../stores.js"
@@ -11,7 +12,7 @@
 
   const agreedNames = agreed.map((name) => name[0]).join("\n")
   const disagreedNames = disagreed.map((name) => name[0]).join("\n")
-  console.log($randomMovies)
+  console.log(agreed[0])
 
   function reload() {
     goto("/instructions")
@@ -30,6 +31,9 @@
     const found = $randomMovies.find((movie) => movie.title === title)
     return found.poster
   }
+  let favorite = agreed[0][0]
+  let dynamicText = `Turns out my favorite top movie critic is ${favorite}. %0a%0aWho's yours?%0a%0a`
+  let dynamicHref = `https://twitter.com/share?url=moviecriticmatchmaker.com&text=${dynamicText}`
 </script>
 
 <style>
@@ -131,6 +135,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .twitterLogo {
+    margin-right: 0;
+    max-width: 25px;
   }
 
   @media (min-width: 320px) and (max-width: 374px) {
@@ -279,5 +294,11 @@
       {/each}
     </div>
   </div>
-  <button class="button" on:click={reload}>Again</button>
+  <div class="buttonContainer">
+    <button class="button" on:click={reload}>Again</button>
+    <button class="button"><a target="_blank" href={dynamicHref}><img
+          alt="share on twitter"
+          class="twitterLogo"
+          src={twitter} /></a></button>
+  </div>
 </div>
