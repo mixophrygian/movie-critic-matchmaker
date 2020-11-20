@@ -52,11 +52,13 @@
 
   $: {
     if ($completedChoices) {
-      agreed = findCriticsWhoAgree($criticObjects)($userChoices)
-      disagreed = findCriticsWhoDisagree($criticObjects)($userChoices)
+      agreed = findCriticsWhoAgree($criticObjects)($userChoices, $userSkipped)
+      disagreed = findCriticsWhoDisagree($criticObjects)(
+        $userChoices,
+        $userSkipped
+      )
       userChoices.set([])
       progressBars.set({ fresh: 0, rotten: 0 })
-      console.log($userSkipped)
     }
   }
 

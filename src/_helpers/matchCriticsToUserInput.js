@@ -1,4 +1,3 @@
-// const fs = require("fs")
 const HOW_MANY_CRITICS = 2
 
 // sample user input
@@ -25,11 +24,37 @@ const HOW_MANY_CRITICS = 2
 //       { title: "The Amazing Spider-Man 2", broadRating: "fresh" },
 //       { title: "Star Wars: The Last Jedi", broadRating: "rotten" },
 //     ],
+//     skippedReviews: [
+//       { title: "Red", broadRating: "rotten" },
+//       { title: "Ferdinand", broadRating: "fresh" },
+//     ]
 //   },
 // }
 
+function getSkippedRecommendations(data, critics, skipped) {
+  const criticsNamesOnly = [critics[0][0], critics[1][0]] 
+  const wholeCritic = data.filter(criticObject => 
+    criticsNamesOnly[0] == criticObject.name || 
+    criticsNamesOnly[1] == criticObject.name  
+  ) 
+  const withSkipped = wholeCritic.map(critic => {
+    let skippedAvailable = []
+    skipped.forEach(skippedMovie => {
+      const matchedMovie = critic.movies.find(criticMovie => criticMovie.title == skippedMovie.title)
+      if(matchedMovie) {
+        skippedAvailable.push(matchedMovie)
+      }
+    })
+    return {name: critic.name, skipped: skippedAvailable}
+  })
+  const out = critics.map((criticArray, index) => {
+    return [...criticArray, {skippedReccomendations: withSkipped[index].skipped}]
+  })
+  return out 
+}
+
 export function findCriticsWhoAgree(criticData) {
-  return function (userChoices) {
+  return function (userChoices, userSkipped) {
     const criticsWhoAgree = userChoices.reduce((output, movie) => {
       const agreed = criticData.filter((critic) => {
         const criticMovie = critic.movies.find(
@@ -53,15 +78,18 @@ export function findCriticsWhoAgree(criticData) {
       return output
     }, {})
 
+
     const criticsSorted = Object.entries(criticsWhoAgree).sort(
       (a, b) => b[1].moviesAgreed.length - a[1].moviesAgreed.length
     )
-    return criticsSorted.slice(0, HOW_MANY_CRITICS)
+    const topTwo = criticsSorted.slice(0, HOW_MANY_CRITICS)
+    const withSkippedRecommendations = getSkippedRecommendations(criticData, topTwo, userSkipped)
+    return withSkippedRecommendations 
   }
 }
 
 export function findCriticsWhoDisagree(criticData) {
-  return function (userChoices) {
+  return function (userChoices, userSkipped) {
     const criticsWhoDisagree = userChoices.reduce((output, movie) => {
       const disagreed = criticData.filter((critic) => {
         const criticMovie = critic.movies.find(
@@ -91,23 +119,9 @@ export function findCriticsWhoDisagree(criticData) {
     const criticsSorted = Object.entries(criticsWhoDisagree).sort(
       (a, b) => b[1].moviesDisagreed.length - a[1].moviesDisagreed.length
     )
-    return criticsSorted.slice(0, HOW_MANY_CRITICS)
+    const topTwo = criticsSorted.slice(0, HOW_MANY_CRITICS)
+    const withSkippedRecommendations = getSkippedRecommendations(criticData, topTwo, userSkipped)
+    return withSkippedRecommendations
   }
 }
 
-// fs.readFile(
-//   "consolidatedCriticObjects.json",
-//   "utf8",
-//   function readFileCallbback(err, data) {
-//     if (err) {
-//       console.log("whoops", err)
-//     } else {
-//       const critics = JSON.parse(data)
-//       const mostAgreed = findCriticsWhoAgree(critics)(myPicks)
-//       const mostDisagreed = findCriticsWhoDisagree(critics)(myPicks)
-//       console.log(mostDisagreed)
-//       console.log(mostAgreed)
-//       return { mostAgreed, mostDisagreed }
-//     }
-//   }
-// )

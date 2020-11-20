@@ -3,12 +3,15 @@
   import rotten from "images/rotten.png"
   import arrow from "images/arrow.svg"
   import { goto } from "@sapper/app"
+  import { randomMovies } from "../stores.js"
+  import MiniMovieCard from "../components/MiniMovieCard.svelte"
 
   export let agreed
   export let disagreed
 
   const agreedNames = agreed.map((name) => name[0]).join("\n")
   const disagreedNames = disagreed.map((name) => name[0]).join("\n")
+  console.log($randomMovies)
 
   function reload() {
     goto("/instructions")
@@ -22,6 +25,10 @@
     } else {
       expanded = `${name}${category}`
     }
+  }
+  function getPoster(title) {
+    const found = $randomMovies.find((movie) => movie.title === title)
+    return found.poster
   }
 </script>
 
@@ -37,16 +44,20 @@
     max-width: 50px;
   }
 
+  .hide {
+    width: 0;
+  }
+
   .arrowContainer {
     display: flex;
     justify-content: flex-end;
     align-self: start;
-    flex: 1;
     transition: all 0.25s ease;
   }
 
   .arrowContainer.rotated {
-    transform: rotateZ(180deg);
+    transform-origin: center;
+    transform: rotate(180deg);
   }
 
   .arrow {
@@ -57,6 +68,11 @@
   .resultsContainer {
     display: flex;
     flex-direction: column;
+  }
+
+  .line {
+    margin: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   }
 
   .singleResultContainer {
@@ -103,13 +119,17 @@
     display: block;
     max-height: 0px;
     overflow: hidden;
-    font-size: x-small;
     transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
   }
 
   .collapse.show {
     max-height: 99em;
     transition: max-height 0.5s ease-in-out;
+  }
+
+  .miniMovieList {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 320px) {
@@ -124,6 +144,12 @@
 
     h2 {
       font-size: 19px;
+    }
+
+    .expanded.container,
+    .expanded.stats,
+    .expanded.name {
+      margin-left: -1rem;
     }
 
     .stats {
@@ -146,14 +172,22 @@
     <div class="resultsContainer">
       {#each agreed as name, index}
         <div class="singleResultContainer">
-          <img class="fresh" alt="fresh" src={fresh} />
+          <img
+            class={expanded == `${name[0]}agreed` ? 'hide' : 'fresh'}
+            alt="fresh"
+            src={fresh} />
           <div
             role="button"
             on:click={(e) => toggleCollapse(name[0], 'agreed')}
             class="tapContainer">
-            <div>
-              <div class="name">{name[0]}</div>
-              <div class="stats">
+            <div
+              class={expanded == `${name[0]}agreed` ? 'expanded container' : ''}>
+              <div
+                class={expanded == `${name[0]}agreed` ? 'expanded name' : 'name'}>
+                {name[0]}
+              </div>
+              <div
+                class={expanded == `${name[0]}agreed` ? 'expanded stats' : 'stats'}>
                 <div class="agreedOn">
                   Agreed on
                   {name[1].moviesAgreed.length}
@@ -162,6 +196,16 @@
                 <div
                   class={expanded == `${name[0]}agreed` ? 'show collapse' : 'collapse'}>
                   {name[1].moviesAgreed.map((movie) => movie.title).join(', ')}
+                  <div class="line" />
+                  {name[2].skippedReccomendations.length > 0 ? `Of the movies you skipped, here's their ranking:` : ''}
+                  <div class="miniMovieList">
+                    {#each name[2].skippedReccomendations as movie}
+                      <MiniMovieCard
+                        title={movie.title}
+                        rating={movie.broadRating}
+                        poster={getPoster(movie.title)} />
+                    {/each}
+                  </div>
                 </div>
               </div>
             </div>
@@ -180,14 +224,18 @@
     <div class="resultsContainer">
       {#each disagreed as name, index}
         <div class="singleResultContainer">
-          <img class="rotten" alt="rotten" src={rotten} />
+          <img
+            alt="rotten"
+            src={rotten}
+            class={expanded == `${name[0]}disagreed` ? 'hide' : 'rotten'} />
           <div
             on:click={(e) => toggleCollapse(name[0], 'disagreed')}
             role="button"
             class="tapContainer">
             <div>
               <div class="name">{name[0]}</div>
-              <div class="stats">
+              <div
+                class={expanded == `${name[0]}disagreed` ? 'expanded stats' : 'stats'}>
                 <div class="disagreedOn">
                   Disagreed on
                   {name[1].moviesDisagreed.length}
@@ -199,6 +247,16 @@
                   {name[1].moviesDisagreed
                     .map((movie) => movie.title)
                     .join(', ')}
+                  <div class="line" />
+                  {name[2].skippedReccomendations.length > 0 ? `Of the movies you skipped, here's their ranking:` : ''}
+                  <div class="miniMovieList">
+                    {#each name[2].skippedReccomendations as movie}
+                      <MiniMovieCard
+                        title={movie.title}
+                        rating={movie.broadRating}
+                        poster={getPoster(movie.title)} />
+                    {/each}
+                  </div>
                 </div>
               </div>
             </div>
