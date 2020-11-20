@@ -21,6 +21,8 @@
   }
 
   nav {
+    display: flex;
+    flex-direction: column;
     padding: 3rem;
     font-size: 1.25rem;
   }
@@ -28,11 +30,14 @@
   a {
     color: inherit;
     text-decoration: inherit;
+    margin-bottom: 1rem;
   }
 </style>
 
 <aside class:open>
   <nav>
+    <a class="block" on:click={() => (open = !open)} href="./">Movie Critic
+      Matchmaker</a>
     <a class="block" on:click={() => (open = !open)} href="about">About</a>
   </nav>
 </aside>

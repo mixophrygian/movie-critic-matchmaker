@@ -279,5 +279,5 @@
       {/each}
     </div>
   </div>
-  <button class="button" on:click={reload}>again!</button>
+  <button class="button" on:click={reload}>Again</button>
 </div>
