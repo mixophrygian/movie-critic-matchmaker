@@ -130,9 +130,10 @@
   .miniMovieList {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
-  @media (max-width: 320px) {
+  @media (min-width: 320px) and (max-width: 374px) {
     .leasth2 {
       margin-top: 1rem;
       margin-bottom: 1rem;
@@ -149,7 +150,9 @@
     .expanded.container,
     .expanded.stats,
     .expanded.name {
-      margin-left: -1rem;
+      margin-left: -1.5rem;
+      margin-right: -1.75rem;
+      padding-left: 0.25rem;
     }
 
     .stats {
@@ -162,6 +165,13 @@
 
     .agreedContainer {
       margin-bottom: 0;
+    }
+  }
+
+  @media only screen and (min-width: 375px) {
+    .expanded {
+      margin-left: 0;
+      margin-right: -1rem;
     }
   }
 </style>
