@@ -43,6 +43,12 @@
       rated, we'll find the top critics who you agree with the most. We'll also
       show you the critics you disagree with the most.
     </p>
+    <h2>I haven't seen most of these movies...</h2>
+    <p>
+      Fair! If you tap "Rate different movies" on the results screen, we'll show
+      you 40 more movies and combine your ratings from both rounds to find your
+      critic matches.
+    </p>
 
     <h2>Why are the results different each time?</h2>
     <p>
@@ -68,6 +74,6 @@
       inspired by her cinephile husband, so I guess you can blame them both.
     </p>
     <h2>Speak nerdy to me</h2>
-    <p>This site was built using Svelte!</p>
+    <p>This site was built using Svelte and Sapper.</p>
   </div>
 </div>
