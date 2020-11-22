@@ -49,6 +49,16 @@
     max-width: 50px;
   }
 
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .twitterLogo {
+    margin-left: 1rem;
+  }
+
   .hide {
     width: 0;
   }
@@ -297,7 +307,9 @@
   </div>
   <div class="buttonContainer">
     <button class="button" on:click={rateAgainHandler}>Rate different movies</button>
-    <button class="button"><a target="_blank" href={dynamicHref}><img
+    <button class="button"><a target="_blank" href={dynamicHref}>Share your
+        results
+        <img
           alt="share on twitter"
           class="twitterLogo"
           src={twitter} /></a></button>
