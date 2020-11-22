@@ -4,7 +4,7 @@
   import twitter from "images/twitter.svg"
   import arrow from "images/arrow.svg"
   import { goto } from "@sapper/app"
-  import { randomMovies, secondTimeThrough } from "../stores.js"
+  import { randomMovies, secondTimeThrough, userChoices } from "../stores.js"
   import MiniMovieCard from "../components/MiniMovieCard.svelte"
 
   export let agreed
@@ -43,6 +43,13 @@
     flex-direction: column;
     flex: 1;
   }
+
+  .youRated {
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    color: gray;
+  }
+
   img {
     margin-right: 1rem;
     align-self: start;
@@ -203,6 +210,7 @@
 </style>
 
 <div class="container">
+  <div class="youRated">You rated {$userChoices.length} movies</div>
   <div class="agreedContainer">
     <h2>Your favorite critics</h2>
     <div class="resultsContainer">
@@ -221,6 +229,8 @@
               <div
                 class={expanded == `${name[0]}agreed` ? 'expanded name' : 'name'}>
                 {name[0]}
+                -
+                {name[2].percentageMatch}%
               </div>
               <div
                 class={expanded == `${name[0]}agreed` ? 'expanded stats' : 'stats'}>
@@ -233,9 +243,9 @@
                   class={expanded == `${name[0]}agreed` ? 'show collapse' : 'collapse'}>
                   {name[1].moviesAgreed.map((movie) => movie.title).join(', ')}
                   <div class="line" />
-                  {name[2].skippedReccomendations.length > 0 ? `Of the movies you skipped, here's their ranking:` : ''}
+                  {name[3].skippedReccomendations.length > 0 ? `Of the movies you skipped, here's their ranking:` : ''}
                   <div class="miniMovieList">
-                    {#each name[2].skippedReccomendations as movie}
+                    {#each name[3].skippedReccomendations as movie}
                       <MiniMovieCard
                         title={movie.title}
                         rating={movie.broadRating}
@@ -269,7 +279,7 @@
             role="button"
             class="tapContainer">
             <div>
-              <div class="name">{name[0]}</div>
+              <div class="name">{name[0]} - {name[2].percentageMatch}%</div>
               <div
                 class={expanded == `${name[0]}disagreed` ? 'expanded stats' : 'stats'}>
                 <div class="disagreedOn">
@@ -284,9 +294,9 @@
                     .map((movie) => movie.title)
                     .join(', ')}
                   <div class="line" />
-                  {name[2].skippedReccomendations.length > 0 ? `Of the movies you skipped, here's their ranking:` : ''}
+                  {name[3].skippedReccomendations.length > 0 ? `Of the movies you skipped, here's their ranking:` : ''}
                   <div class="miniMovieList">
-                    {#each name[2].skippedReccomendations as movie}
+                    {#each name[3].skippedReccomendations as movie}
                       <MiniMovieCard
                         title={movie.title}
                         rating={movie.broadRating}

@@ -6,7 +6,6 @@
     userChoices,
     userSkipped,
     progressBars,
-    secondTimeThrough,
   } from "../../stores.js"
 
   import { ONE_MOVIE_PERCENTAGE } from "../../_helpers/utils.ts"
@@ -30,13 +29,15 @@
   import NoMatches from "../../components/NoMatches.svelte"
   import ProgressBar from "../../components/ProgressBar.svelte"
   import {
-    findCriticsWhoAgree,
-    findCriticsWhoDisagree,
+    // findCriticsWhoAgree,
+    // findCriticsWhoDisagree,
+    selectTopAndBottomCritics,
   } from "../../_helpers/matchCriticsToUserInput"
 
   export let completed
   let agreed
   let disagreed
+  let both
   export let movies
   export let critics
 
@@ -53,11 +54,12 @@
 
   $: {
     if ($completedChoices) {
-      agreed = findCriticsWhoAgree($criticObjects)($userChoices, $userSkipped)
-      disagreed = findCriticsWhoDisagree($criticObjects)(
+      both = selectTopAndBottomCritics($criticObjects)(
         $userChoices,
         $userSkipped
       )
+      agreed = both.agreed
+      disagreed = both.disagreed
       progressBars.set({ fresh: 0, rotten: 0 })
     }
   }
