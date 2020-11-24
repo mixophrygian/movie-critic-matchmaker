@@ -93,7 +93,7 @@
     width: 100vw;
     height: 74vh;
     position: absolute;
-    top: 50px;
+    top: 90px;
     overflow: hidden;
     background-color: transparent;
   }
@@ -190,13 +190,16 @@
       height: 82vh;
     }
     .skip {
-      bottom: 5%;
+      bottom: 0%;
     }
     :global(.frame) {
       width: 250px;
       height: 358px;
-      top: 52%;
+      top: 47%;
     }
+  }
+
+  @media only screen and (min-height: 612px) and (max-height: 660px) {
   }
 
   /* iphone 6, 7, 8 */
@@ -210,16 +213,19 @@
     :global(.frame) {
       width: 250px;
       height: 358px;
-      top: 52%;
+      top: 43%;
     }
   }
 
   /* iphone X and iphone 11 pro */
   @media only screen and (min-width: 375px) and (min-height: 612px) and (max-height: 812px) {
+    #board {
+      height: 86vh;
+    }
     :global(.frame) {
       width: 275px;
       height: 394px;
-      top: 48%;
+      top: 38%;
     }
     .skip {
       bottom: 8%;
