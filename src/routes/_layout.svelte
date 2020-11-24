@@ -2,10 +2,15 @@
   import Nav from "../components/Nav.svelte"
   import Sidebar from "../components/Sidebar.svelte"
   import UseAPhone from "../components/UseAPhone.svelte"
+  import { onMount } from "svelte"
   export let segment
 
   let width
   let open = false
+
+  onMount(() => {
+    //alert(window.innerHeight)
+  })
 </script>
 
 <style>
