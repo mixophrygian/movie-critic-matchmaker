@@ -187,6 +187,20 @@
 
   @media only screen and (min-width: 375px) and (min-height: 611px) {
     .container {
+      height: 78vh;
+    }
+    .skip {
+      bottom: 0%;
+    }
+    :global(.frame) {
+      width: 250px;
+      height: 358px;
+      top: 43%;
+    }
+  }
+  /* 
+  @media only screen and (min-height: 612px) and (max-height: 660px) {
+    .container {
       height: 82vh;
     }
     .skip {
@@ -197,13 +211,10 @@
       height: 358px;
       top: 47%;
     }
-  }
-
-  @media only screen and (min-height: 612px) and (max-height: 660px) {
-  }
+  } */
 
   /* iphone 6, 7, 8 */
-  @media only screen and (min-width: 375px) and (max-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+  @media only screen and (min-width: 375px) and (min-height: 612px) and (max-height: 667px) and (-webkit-device-pixel-ratio: 2) {
     .container {
       height: 82vh;
     }
@@ -218,14 +229,14 @@
   }
 
   /* iphone X and iphone 11 pro */
-  @media only screen and (min-width: 375px) and (min-height: 612px) and (max-height: 812px) {
+  @media only screen and (min-width: 375px) and (min-height: 675px) and (max-height: 812px) {
     #board {
       height: 86vh;
     }
     :global(.frame) {
       width: 275px;
       height: 394px;
-      top: 38%;
+      top: 33%;
     }
     .skip {
       bottom: 8%;
