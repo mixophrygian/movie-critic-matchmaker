@@ -8,4 +8,4 @@ The front end for movie critic match maker, a mobile swiping-quiz to find out wh
 
 # Where's the data from?
 
-I'm so glad you asked. (todo: link to web scraper repo)
+I'm so glad you asked. All of the data was gathered with [this web scraper I made](https://github.com/mixophrygian/criticMatchScraper)
